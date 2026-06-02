@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller Frecuencias | Lost Astronauta · Academia de la Vida</title>
+    <style>
+        :root {
+            /* BRANDKIT LOST ASTRONAUTA */
+            --verde-protonico: #06FF23;
+            --vacio-sideral: #060606;
+            --blanco-cosmico: #F0F0EE;
+            --gris-nave: #1A1A1A;
+            
+            /* Variables derivadas */
+            --verde-protonico-dim: rgba(6, 255, 35, 0.1);
+            --verde-protonico-border: rgba(6, 255, 35, 0.3);
+            --glow-verde: 0 0 20px rgba(6, 255, 35, 0.4);
+            --font-mono: 'Courier New', Courier, monospace;
+            --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+        }
+        
+        body {
+            background-color: var(--vacio-sideral);
+            color: var(--blanco-cosmico);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* NAV */
+        nav {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--gris-nave);
+            position: sticky;
+            top: 0;
+            background: rgba(6, 6, 6, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+        
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .brand {
+            font-family: var(--font-mono);
+            font-weight: bold;
+            letter-spacing: 3px;
+            color: var(--verde-protonico);
+            font-size: 1.2rem;
+            text-shadow: var(--glow-verde);
+        }
+        
+        .nav-links a {
+            color: var(--blanco-cosmico);
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 0.9rem;
+            font-family: var(--font-mono);
+            transition: all 0.3s;
+            opacity: 0.8;
+        }
+        
+        .nav-links a:hover { 
+            color: var(--verde-protonico);
+            opacity: 1;
+            text-shadow: var(--glow-verde);
+        }
+
+        /* HERO */
+        header {
+            text-align: center;
+            padding: 80px 0 50px;
+        }
+        
+        .tag {
+            color: var(--verde-protonico);
+            font-family: var(--font-mono);
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            display: inline-block;
+            padding: 5px 15px;
+            border: 1px solid var(--verde-protonico-border);
+        }
+        
+        h1 {
+            font-family: var(--font-mono);
+            font-size: 3.5rem;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+            color: var(--blanco-cosmico);
+            text-transform: uppercase;
+        }
+        
+        .subtitle {
+            color: var(--blanco-cosmico);
+            opacity: 0.7;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        
+        .hero-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1px;
+            background: var(--gris-nave);
+            border: 1px solid var(--gris-nave);
+            margin-top: 30px;
+        }
+        
+        .hero-item {
+            background: var(--vacio-sideral);
+            text-align: center;
+            padding: 25px 15px;
+            transition: all 0.3s;
+        }
+        
+        .hero-item:hover {
+            background: var(--gris-nave);
+        }
+        
+        .hero-item strong {
+            display: block;
+            color: var(--verde-protonico);
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            font-family: var(--font-mono);
+        }
+        
+        .hero-item span { 
+            font-size: 0.85rem; 
+            color: var(--blanco-cosmico);
+            opacity: 0.7;
+        }
+
+        /* SECTIONS */
+        section { 
+            padding: 60px 0; 
+            border-bottom: 1px solid var(--gris-nave);
+        }
+        
+        h2 {
+            font-family: var(--font-mono);
+            color: var(--verde-protonico);
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: 2px;
+        }
+        
+        h2::before {
+            content: "0";
+            color: var(--verde-protonico);
+            font-weight: bold;
+            opacity: 0.5;
+        }
+        
+        p { 
+            margin-bottom: 18px; 
+            color: var(--blanco-cosmico);
+            opacity: 0.85;
+            font-size: 1rem;
+        }
+
+        /* CARDS */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1px;
+            background: var(--gris-nave);
+            margin-top: 30px;
+            border: 1px solid var(--gris-nave);
+        }
+        
+        .card {
+            background: var(--vacio-sideral);
+            padding: 30px;
+            transition: all 0.3s;
+        }
+        
+        .card:hover { 
+            background: var(--gris-nave);
+            transform: translateY(-2px);
+        }
+        
+        .card h3 {
+            color: var(--verde-protonico);
+            font-size: 1rem;
+            margin-bottom: 12px;
+            font-family: var(--font-mono);
+            letter-spacing: 1px;
+        }
+        
+        .card p {
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* TIMELINE */
+        .timeline { 
+            border-left: 2px solid var(--verde-protonico-border); 
+            padding-left: 30px; 
+            margin: 30px 0; 
+        }
+        
+        .timeline-item { 
+            position: relative; 
+            margin-bottom: 35px; 
+        }
+        
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -36px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: var(--verde-protonico);
+            border-radius: 50%;
+            box-shadow: var(--glow-verde);
+        }
+        
+        .time { 
+            color: var(--verde-protonico); 
+            font-weight: 600; 
+            font-family: var(--font-mono); 
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+        
+        .title { 
+            font-weight: 600; 
+            margin: 8px 0;
+            color: var(--blanco-cosmico);
+            font-size: 1.1rem;
+        }
+        
+        .desc { 
+            color: var(--blanco-cosmico);
+            opacity: 0.7;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* CTA BOX */
+        .cta-box {
+            background: var(--gris-nave);
+            border: 2px solid var(--verde-protonico);
+            padding: 50px 30px;
+            text-align: center;
+            margin: 50px 0;
+            box-shadow: var(--glow-verde);
+        }
+        
+        .cta-box h2 {
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .price { 
+            font-size: 3rem; 
+            font-weight: bold; 
+            color: var(--verde-protonico);
+            margin: 20px 0;
+            font-family: var(--font-mono);
+            text-shadow: var(--glow-verde);
+        }
+        
+        .price span {
+            font-size: 1rem;
+            opacity: 0.7;
+            font-weight: normal;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--verde-protonico);
+            color: var(--vacio-sideral);
+            padding: 16px 35px;
+            border-radius: 0;
+            text-decoration: none;
+            font-weight: 700;
+            font-family: var(--font-mono);
+            letter-spacing: 2px;
+            margin: 10px;
+            transition: all 0.3s;
+            border: 2px solid var(--verde-protonico);
+            text-transform: uppercase;
+        }
+        
+        .btn:hover { 
+            background: transparent;
+            color: var(--verde-protonico);
+            box-shadow: var(--glow-verde);
+            transform: translateY(-3px);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--verde-protonico);
+            color: var(--verde-protonico);
+        }
+        
+        .btn-outline:hover { 
+            background: var(--verde-protonico);
+            color: var(--vacio-sideral);
+        }
+        
+        .note { 
+            font-size: 0.85rem; 
+            color: var(--blanco-cosmico);
+            opacity: 0.6;
+            margin-top: 20px;
+            font-family: var(--font-mono);
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 50px 0;
+            border-top: 1px solid var(--gris-nave);
+            color: var(--blanco-cosmico);
+            opacity: 0.6;
+            font-size: 0.85rem;
+        }
+        
+        footer a { 
+            color: var(--verde-protonico);
+            text-decoration: none;
+            margin: 0 10px;
+            font-family: var(--font-mono);
+            transition: all 0.3s;
+        }
+        
+        footer a:hover {
+            text-shadow: var(--glow-verde);
+            opacity: 1;
+        }
+
+        /* HIGHLIGHT BOX */
+        .highlight-box {
+            background: var(--verde-protonico-dim);
+            border-left: 3px solid var(--verde-protonico);
+            padding: 25px;
+            margin: 30px 0;
+        }
+        
+        .highlight-box p {
+            margin: 10px 0;
+            font-family: var(--font-mono);
+            font-size: 0.95rem;
+        }
+        
+        .highlight-box strong {
+            color: var(--verde-protonico);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.2rem; }
+            .hero-grid { grid-template-columns: 1fr 1fr; }
+            .nav-inner { flex-direction: column; gap: 15px; }
+            .nav-links a { margin: 0 10px; }
+            .timeline { padding-left: 20px; }
+            .price { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="container nav-inner">
+        <div class="brand">LOST.ASTRONAUTA</div>
+        <div class="nav-links">
+            <a href="#objetivo">OBJETIVO</a>
+            <a href="#jornada">JORNADA</a>
+            <a href="#padres">PADRES</a>
+            <a href="#inscripcion">INSCRIPCIÓN</a>
+        </div>
+    </div>
+</nav>
+
+<header>
+    <div class="container">
+        <span class="tag">ACADEMIA DE LA VIDA · INVIERNO 2026</span>
+        <h1>Taller Frecuencias</h1>
+        <p class="subtitle">Exploración musical intensiva · Jornada completa · Nysa Arts Studio</p>
+        
+        <div class="hero-grid">
+            <div class="hero-item"><strong>10:00 – 17:00</strong><span>Jornada completa</span></div>
+            <div class="hero-item"><strong>8 – 14 años</strong><span>Exploradores</span></div>
+            <div class="hero-item"><strong>$30.000</strong><span>Valor por persona</span></div>
+            <div class="hero-item"><strong>Máx. 12</strong><span>Cupos limitados</span></div>
+            <div class="hero-item"><strong>Julio 2026</strong><span>Fecha por confirmar</span></div>
+            <div class="hero-item"><strong>Nysa Arts</strong><span>Estudio profesional</span></div>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <section id="objetivo">
+        <h2>01 Objetivo del taller</h2>
+        <p>Proporcionar a niños y jóvenes de 8 a 14 años una experiencia de exploración musical integrada que conecte el sonido con el cuerpo, las emociones y la capacidad creativa propia, en un entorno de estudio profesional que eleva el valor percibido de la experiencia.</p>
+        <p>El taller no busca formar músicos. Busca que cada participante descubra su relación personal con la música y vuelva a casa habiendo creado algo que no existía antes de ese día.</p>
+        
+        <div class="card-grid">
+            <div class="card"><h3>Objetivo 01</h3><p>Reconocer géneros musicales y sus características emocionales y físicas.</p></div>
+            <div class="card"><h3>Objetivo 02</h3><p>Explorar instrumentos reales: guitarra, bajo, batería y teclado. Sin nivel previo.</p></div>
+            <div class="card"><h3>Objetivo 03</h3><p>Conectar el sonido con el cuerpo y las emociones a través de escucha activa.</p></div>
+            <div class="card"><h3>Objetivo 04</h3><p>Crear una pieza musical colectiva simple al final de la jornada.</p></div>
+            <div class="card"><h3>Objetivo 05</h3><p>Identificar el instrumento o género con el que cada participante resonó más.</p></div>
+        </div>
+    </section>
+
+    <section id="metodologia">
+        <h2>02 Metodología</h2>
+        <p>El taller se estructura bajo la metodología <strong>Academia de la Vida</strong>, línea educativa de Lost Astronauta con 25 años de trayectoria y programas validados por el Ministerio de Educación de Chile.</p>
+        
+        <div class="highlight-box">
+            <p><strong>Pilar 01:</strong> Planificación modular. Cada bloque es autocontenido y adaptable al grupo en tiempo real.</p>
+            <p><strong>Pilar 02:</strong> Espacio protegido. No hay respuestas incorrectas. El error es parte del aprendizaje.</p>
+            <p><strong>Pilar 03:</strong> Evidencia de impacto. Cada participante recibe un registro tangible de lo que creó.</p>
+        </div>
+    </section>
+
+    <section id="jornada">
+        <h2>03 Bitácora de la jornada</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="time">10:00</div>
+                <div class="title">Bienvenida y acuerdos</div>
+                <div class="desc">Presentación del facilitador y el espacio. Acuerdos de convivencia. Dinámica: "¿Qué canción describe cómo llegaste hoy?"</div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">10:20</div>
+                <div class="title">Bloque teórico 1 — La música tiene cuerpo</div>
+                <div class="desc">¿Qué es el sonido? Ritmo, melodía y armonía explicados corporalmente. Escucha activa de 4 fragmentos.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">11:10</div>
+                <div class="title">Bloque teórico 2 — Los lenguajes de la música</div>
+                <div class="desc">Recorrido por géneros con audio y referencias visuales. Concepto: música como intención + emoción + estructura.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">12:00</div>
+                <div class="title">Práctica 1 — Primer contacto</div>
+                <div class="desc">Sala Skylight. Exploración libre guiada. Rotación por instrumentos. Cierre: "¿Cuál fue tu frecuencia?"</div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">13:00</div>
+                <div class="title">Pausa Almuerzo & Pizza Party</div>
+                <div class="desc"><strong>Nosotros ponemos la pizza para todos.</strong> Solo pedimos traer botella de agua reutilizable y, opcionalmente, un snack saludable extra para compartir.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">14:00</div>
+                <div class="title">Reactivación — El cuerpo como instrumento</div>
+                <div class="desc">Sala de espejos. Percusión corporal colectiva por capas. Conexión cuerpo → emoción → sonido.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">14:30</div>
+                <div class="title">Práctica 2 — Creamos algo</div>
+                <div class="desc">Sala Skylight. Grupos de 3-4. Crear un patrón rítmico-melódico de 8 tiempos con 1-2 instrumentos.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">15:30</div>
+                <div class="title">Transmisión — Muestra interna</div>
+                <div class="desc">Cada grupo presenta su creación. Escucha activa. "Hoy crearon algo que no existía esta mañana."</div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">16:20</div>
+                <div class="title">Cierre — Kit del Explorador</div>
+                <div class="desc">Reflexión individual. Entrega del <strong>Fanzine "Frecuencias"</strong> (conceptos aprendidos), <strong>Sticker exclusivo</strong> y <strong>Certificado de Participación</strong>.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">17:00</div>
+                <div class="title">Fin de jornada</div>
+                <div class="desc">Llegada de padres y tutores. Facilitador disponible para comentarios.</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="aprendizajes">
+        <h2>04 Aprendizajes esperados</h2>
+        <div class="card-grid">
+            <div class="card"><h3>Escucha activa</h3><p>Distinguir géneros, identificar ritmo/melodía/armonía y reconocer la intención emocional.</p></div>
+            <div class="card"><h3>Conciencia corporal</h3><p>Marcar pulso, identificar cómo la música afecta físicamente y participar en percusión colectiva.</p></div>
+            <div class="card"><h3>Contacto instrumental</h3><p>Familiarizarse con 4 instrumentos reales, producir sonido intencional e identificar afinidad.</p></div>
+            <div class="card"><h3>Creación colectiva</h3><p>Trabajar hacia un resultado sonoro grupal, tomar decisiones creativas y presentar una creación propia.</p></div>
+        </div>
+    </section>
+
+    <section id="padres">
+        <h2>05 Información para padres y tutores</h2>
+        <div class="card-grid">
+            <div class="card"><h3>Puntualidad</h3><p>El taller inicia a las 10:00 hrs. Llegar 10 minutos antes para el registro.</p></div>
+            <div class="card"><h3>Ropa cómoda</h3><p>Habrá movimiento corporal. Ropa y calzado sin restricciones.</p></div>
+            <div class="card"><h3>Almuerzo</h3><p><strong>Nosotros compramos la pizza.</strong> Solo pedimos agua reutilizable y snack opcional para compartir.</p></div>
+            <div class="card"><h3>Sin experiencia</h3><p>No se requiere conocimiento musical. El taller parte desde cero.</p></div>
+            <div class="card"><h3>El lugar</h3><p>Nysa Arts Studio es un espacio profesional. Acceso a instrumentos reales en entorno acústico controlado.</p></div>
+            <div class="card"><h3>Retiro</h3><p>La jornada finaliza a las 17:00 hrs. Padres pueden llegar desde las 16:30 para el cierre.</p></div>
+            <div class="card"><h3>Salud & Seguridad</h3><p>Por favor, informar alergias alimentarias o condiciones médicas al momento de la inscripción.</p></div>
+            <div class="card"><h3>Celulares</h3><p>Modo silencio durante los bloques de actividad para mantener la inmersión.</p></div>
+        </div>
+    </section>
+
+    <section id="inscripcion">
+        <div class="cta-box">
+            <h2>06 Inscripción</h2>
+            <p style="opacity: 0.7; margin-bottom: 20px;">Vacaciones de invierno 2026 · Nysa Arts Studio · Santiago de Chile</p>
+            <div class="price">$30.000 <span>por persona</span></div>
+            <a href="https://wa.me/56975693952?text=Hola%2C%20quiero%20inscribirme%20en%20el%20Taller%20Frecuencias%20de%20Lost%20Astronauta" class="btn">Inscribirse por WhatsApp</a>
+            <a href="mailto:info@lostastronauta.org?subject=Inscripcion%20Taller%20Frecuencias" class="btn btn-outline">Escribir por email</a>
+            <p class="note">Máximo 12 cupos · Confirmación con 50% de anticipo · Fecha julio por confirmar</p>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p style="margin-bottom: 15px; font-family: var(--font-mono); letter-spacing: 2px;">LOST ASTRONAUTA · Academia de la Vida</p>
+        <div>
+            <a href="https://lostastronauta.org" target="_blank">lostastronauta.org</a> · 
+            <a href="https://lostastronauta.org/academiadelavida" target="_blank">academiadelavida</a> · 
+            <a href="https://instagram.com/lostastronauta" target="_blank">@lostastronauta</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
