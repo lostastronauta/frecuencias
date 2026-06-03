@@ -1,21 +1,7 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<!-- Metadatos Estándar -->
-<title>Taller Frecuencias | Academia de la Vida (Lost Astronauta)</title>
-<meta name="description" content="Exploración musical intensiva para niños y jóvenes de 8 a 14 años en Nysa Arts Studio. Cupos limitados.">
-
-<!-- Open Graph para WhatsApp, Instagram y Facebook -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://frecuencias-xi.vercel.app/">
-<meta property="og:title" content="Taller Frecuencias — Invierno 2026">
-<meta property="og:description" content="Una jornada completa de conexión, sonido y creación colectiva. Incluye almuerzo y Kit del Explorador.">
-<meta property="og:image" content="https://frecuencias-xi.vercel.app/images/og-frecuencias.jpg"> 
-
-<!-- IMPORTANTE: Crea una imagen de 1200x630px para el og:image que tenga el logo de Academia de la Vida y una foto potente del estudio. -->
-
-
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Taller Frecuencias | Lost Astronauta · Academia de la Vida</title>
@@ -725,62 +711,69 @@
     <p class="hero-sub">Exploración musical intensiva · Jornada completa · Nysa Arts Studio</p>
 
     <!-- CARRUSEL -->
-    <!-- ======================================================== -->
-<!-- CARRUSEL OPTIMIZADO (REEMPLAZO DIRECTO)                  -->
-<!-- ======================================================== -->
-<div class="carousel-wrap">
-    <div class="carousel" id="carousel">
+    <div class="carousel-wrap">
+        <div class="carousel" id="carousel">
 
-        <!-- Diapositiva 01 — Portada del taller -->
-        <div class="slide active" style="background-image: url('1.png'); background-size: cover; background-position: center; min-height: 450px;">
-            <!-- Mantenemos la estructura interna por si el CSS la requiere, pero limpia -->
-            <div class="slide-placeholder" style="background: rgba(11, 15, 25, 0.4); height: 100%; min-height: 450px; display: flex; flex-direction: column; justify-content: flex-end; padding: 20px;">
-                <span class="slide-label" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Imagen 01 — Portada del taller</span>
-                <span class="slide-num" style="color: #06FF23;">[ Conectado ]</span>
+            <div class="slide active">
+                <div class="slide-placeholder">
+                    <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="1">
+                        <circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+                    </svg>
+                    <span class="slide-label">Imagen 01 — Portada del taller</span>
+                    <span class="slide-num">[ Reemplaza con tu fotografía ]</span>
+                </div>
             </div>
+
+            <div class="slide">
+                <div class="slide-placeholder">
+                    <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="1">
+                        <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
+                    </svg>
+                    <span class="slide-label">Imagen 02 — Exploración instrumental</span>
+                    <span class="slide-num">[ Reemplaza con tu fotografía ]</span>
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="slide-placeholder">
+                    <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="1">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                    <span class="slide-label">Imagen 03 — Trabajo en equipo</span>
+                    <span class="slide-num">[ Reemplaza con tu fotografía ]</span>
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="slide-placeholder">
+                    <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="1">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                    <span class="slide-label">Imagen 04 — Muestra final</span>
+                    <span class="slide-num">[ Reemplaza con tu fotografía ]</span>
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="slide-placeholder">
+                    <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="1">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+                    </svg>
+                    <span class="slide-label">Imagen 05 — Kit del Explorador</span>
+                    <span class="slide-num">[ Reemplaza con tu fotografía ]</span>
+                </div>
+            </div>
+
+            <button class="carousel-btn prev" id="prev" aria-label="Anterior">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button class="carousel-btn next" id="next" aria-label="Siguiente">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
         </div>
 
-        <!-- Diapositiva 02 — Exploración instrumental -->
-        <div class="slide" style="background-image: url('2.png'); background-size: cover; background-position: center; min-height: 450px;">
-            <div class="slide-placeholder" style="background: rgba(11, 15, 25, 0.4); height: 100%; min-height: 450px; display: flex; flex-direction: column; justify-content: flex-end; padding: 20px;">
-                <span class="slide-label" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Imagen 02 — Exploración instrumental</span>
-                <span class="slide-num" style="color: #06FF23;">[ Conectado ]</span>
-            </div>
-        </div>
-
-        <!-- Diapositiva 03 — Trabajo en equipo -->
-        <div class="slide" style="background-image: url('3.png'); background-size: cover; background-position: center; min-height: 450px;">
-            <div class="slide-placeholder" style="background: rgba(11, 15, 25, 0.4); height: 100%; min-height: 450px; display: flex; flex-direction: column; justify-content: flex-end; padding: 20px;">
-                <span class="slide-label" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Imagen 03 — Trabajo en equipo</span>
-                <span class="slide-num" style="color: #06FF23;">[ Conectado ]</span>
-            </div>
-        </div>
-
-        <!-- Diapositiva 04 — Muestra final -->
-        <div class="slide" style="background-image: url('4.png'); background-size: cover; background-position: center; min-height: 450px;">
-            <div class="slide-placeholder" style="background: rgba(11, 15, 25, 0.4); height: 100%; min-height: 450px; display: flex; flex-direction: column; justify-content: flex-end; padding: 20px;">
-                <span class="slide-label" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Imagen 04 — Muestra final</span>
-                <span class="slide-num" style="color: #06FF23;">[ Conectado ]</span>
-            </div>
-        </div>
-
-        <!-- Diapositiva 05 — Kit del Explorador (Duplicamos la portada o una imagen para no romper la lógica de 5 elementos de tu JS) -->
-        <div class="slide" style="background-image: url('1.png'); background-size: cover; background-position: center; min-height: 450px;">
-            <div class="slide-placeholder" style="background: rgba(11, 15, 25, 0.4); height: 100%; min-height: 450px; display: flex; flex-direction: column; justify-content: flex-end; padding: 20px;">
-                <span class="slide-label" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Imagen 05 — Kit del Explorador</span>
-                <span class="slide-num" style="color: #06FF23;">[ Conectado ]</span>
-            </div>
-        </div>
-
-        <!-- Botones de Control Originales -->
-        <button class="carousel-btn prev" id="prev" aria-label="Anterior">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
-        </button>
-        <button class="carousel-btn next" id="next" aria-label="Siguiente">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
+        <div class="carousel-dots" id="dots"></div>
     </div>
-</div>
 
     <!-- STATS -->
     <div class="stats container">
@@ -1178,12 +1171,7 @@
                     <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
                 </div>
                 <h3>El espacio</h3>
-                <p><a href="https://www.instagram.com/nysa_arts/?hl=es-la" 
-   target="_blank" 
-   rel="noopener noreferrer"
-   style="color: #06FF23; text-decoration: none; transition: all 0.3s ease;">
-   Nysa Arts
-</a> Studio es un espacio profesional en entorno acústico controlado.</p>
+                <p><a href="https://www.instagram.com/nysa_arts/?hl=es-la" target="_blank" rel="noopener noreferrer">Nysa Arts</a> Studio es un espacio profesional en entorno acústico controlado.</p>
             </div>
             <div class="card reveal">
                 <div class="card-icon">
@@ -1217,160 +1205,55 @@
                 </svg>
             </div>
             <div>
-<!-- SECCIÓN MAPA - Agregar después de la sección "Padres" -->
-<section id="ubicacion" style="padding: 60px 0; border-top: 1px solid var(--gris-nave);">
-    <div class="container">
-        <h2 style="justify-content: center; margin-bottom: 30px;">📍 Ubicación del taller</h2>
-        <p style="text-align: center; opacity: 0.85; margin-bottom: 25px; max-width: 600px; margin-left: auto; margin-right: auto;">
-            <strong>Nysa Arts Studio</strong><br>
-            Erasmo Escala 2170, Santiago de Chile<br>
-            <span style="color: var(--verde-protonico); font-family: var(--font-mono);">Acceso en transporte público · Estacionamiento cercano</span>
-        </p>
-        
-        <!-- Contenedor del mapa con estilo brandkit -->
-        <div style="
-            background: var(--gris-nave);
-            border: 2px solid var(--verde-protonico-border);
-            border-radius: 8px;
-            padding: 10px;
-            box-shadow: var(--glow-verde);
-            overflow: hidden;
-        ">
-            <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 4px;">
-    <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2227.1464239699794!2d-70.66509231815391!3d-33.44603853338525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c5abaf504b6f%3A0x7d9ea299a694e5f4!2sNysa%20Arts%20-%20Espacio%20Artistico!5e0!3m2!1ses!2scl!4v1780519256515!5m2!1ses!2scl" 
-        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; border-radius: 4px;" 
-        allowfullscreen="" 
-        loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade"
-        title="Ubicación de Nysa Arts Studio">
-    </iframe>
-</div>
-        
-        <!-- Botones de acción rápida -->
-        <div style="text-align: center; margin-top: 25px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-            <a href="https://maps.app.goo.gl/dBoaReRsz8USkaBv6" 
-               target="_blank" 
-               class="btn btn-outline"
-               style="padding: 12px 24px; font-size: 0.9rem;">
-                🗺️ Abrir en Google Maps
-            </a>
-            
-        </div>
-        
-        <!-- Tips de llegada -->
-        <div style="
-            background: var(--verde-protonico-dim);
-            border-left: 3px solid var(--verde-protonico);
-            padding: 20px;
-            margin-top: 30px;
-            border-radius: 0 6px 6px 0;
-        ">
-            <p style="margin: 0; font-family: var(--font-mono); font-size: 0.9rem;">
-                <strong style="color: var(--verde-protonico);">💡 Tips de llegada:</strong><br>
-                • Metros: Línea 1, Estación República y Los Héroes (10 min caminando)<br>
-                • Buses: Múltiples líneas por Av. Alameda Bernardo O'Higgins y calles aledañas<br>
-                • Estacionamiento: Zonas azules disponibles en la calle<br>
-                • Llegar 10 min antes para estacionar y registrar ingreso
-            </p>
-        </div>
-    </div>
-</section>
-
-
-
-
-
-
-
-
-                
-               <section id="facilitador">
-    <div class="container">
-        <div class="section-header">
-            <div class="section-num">06</div>
-            <h2>Tu facilitador</h2>
-        </div>
-    </div>
-</section>
-
-<!-- Contenedor principal con clase para responsive -->
-<div class="facilitador-container" style="display:grid; grid-template-columns: 1fr 2fr; gap: 1px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; overflow: hidden;">
-    
-    <!-- Columna izquierda - Foto y datos -->
-    <div style="background:var(--negro); padding:48px 30px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:20px;">
-        <div style="width:140px; height:140px; border:2px solid var(--verde-border); border-radius:50%; background:var(--verde-dim); display:flex; align-items:center; justify-content:center; box-shadow:var(--glow-sm); overflow:hidden;">
-            <img src="https://i0.wp.com/lostastronauta.org/wp-content/uploads/2024/09/astromykos-ID.png?w=1600&ssl=1" 
-                 alt="AstroMykos ID" 
-                 style="width:100%; height:100%; object-fit:cover;">
-        </div>
-        <div>
-            <div style="font-family:var(--mono); color:var(--verde); font-size:1.1rem; letter-spacing:2px; margin-bottom:4px; font-weight:700;">ASTROMYKOS</div>
-            <div style="font-size:.85rem; opacity:.6; font-family:var(--mono);">Lost Astronauta SpA</div>
-        </div>
-        <a href="https://lostastronauta.org/about/" target="_blank" style="display:inline-flex; align-items:center; gap:10px; font-family:var(--mono); font-size:.8rem; color:var(--blanco); text-decoration:none; border:1px solid rgba(255,255,255,0.2); padding:10px 20px; transition:all .3s; letter-spacing:1px; border-radius: 4px;"
-            onmouseover="this.style.background='var(--verde)'; this.style.color='var(--negro)'; this.style.borderColor='var(--verde)';" onmouseout="this.style.background='transparent'; this.style.color='var(--blanco)'; this.style.borderColor='rgba(255,255,255,0.2)';">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            Ver perfil completo
-        </a>
-    </div>
-
-    <!-- Columna derecha - Descripción -->
-    <div style="background:var(--negro); padding:48px 40px; display: flex; flex-direction: column; justify-content: center;">
-        <p style="font-size:1.1rem; margin-bottom:20px; opacity:.9; line-height:1.8;">
-            El taller es impartido por <strong style="color:var(--verde);">AstroMykos</strong>, director creativo y piloto de la nave de <strong>Lost Astronauta SpA</strong>, ecosistema de diseño estratégico, educación y producción cultural con más de <strong>25 años de trayectoria</strong> en Chile.
-        </p>
-        <p style="margin-bottom:20px;">
-            Con formación en diseño, comunicación y metodologías activas, AstroMykos ha desarrollado tutorías educativas validada por el <strong>Ministerio de Educación de Chile</strong> y ha facilitado múltiples experiencias de aprendizaje recreativas para niños, jóvenes y adultos.
-        </p>
-        <p style="margin-bottom:0;">
-            Su metodología combina el rigor técnico con la filosofía del <em>Rock Protónico</em>: la creatividad como partícula fundamental, el error como combustible y el territorio propio como punto de partida. Cada taller es un espacio protegido donde no existe la respuesta incorrecta.
-        </p>
-        <div style="display:flex; gap:24px; margin-top:32px; flex-wrap:wrap;">
-            <div style="display:flex; align-items:center; gap:8px;">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-                <span style="font-family:var(--mono); font-size:.8rem; opacity:.7;">+25 años de trayectoria</span>
-            </div>
-            <div style="display:flex; align-items:center; gap:8px;">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                <span style="font-family:var(--mono); font-size:.8rem; opacity:.7;">Validado Mineduc</span>
-            </div>
-            <div style="display:flex; align-items:center; gap:8px;">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-                <span style="font-family:var(--mono); font-size:.8rem; opacity:.7;">Santiago, Chile</span>
+                <div class="section-num">06</div>
+                <h2>Tu facilitador</h2>
             </div>
         </div>
-    </div>
-</div>
 
-<!-- ESTILOS RESPONSIVE - Agregar en tu <style> -->
-<style>
-@media (max-width: 768px) {
-    .facilitador-container {
-        grid-template-columns: 1fr !important;
-    }
-    
-    .facilitador-container > div:first-child {
-        padding: 30px 20px !important;
-        border-bottom: 1px solid rgba(255,255,255,0.05) !important;
-    }
-    
-    .facilitador-container > div:last-child {
-        padding: 30px 20px !important;
-    }
-    
-    .facilitador-container p {
-        font-size: 0.95rem !important;
-        line-height: 1.7 !important;
-    }
-    
-    .facilitador-container > div:last-child > div {
-        flex-direction: column !important;
-        gap: 12px !important;
-        margin-top: 24px !important;
-    }
-}
-</style>
+        <div style="display:grid; grid-template-columns: 1fr 2fr; gap: 1px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; overflow: hidden;">
+            <div style="background:var(--negro); padding:48px 30px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:20px;">
+                <div style="width:140px; height:140px; border:2px solid var(--verde-border); border-radius:50%; background:var(--verde-dim); display:flex; align-items:center; justify-content:center; box-shadow:var(--glow-sm); overflow:hidden;">
+                    <img src="https://i0.wp.com/lostastronauta.org/wp-content/uploads/2024/09/astromykos-ID.png?w=1600&ssl=1" 
+                         alt="AstroMykos ID" 
+                         style="width:100%; height:100%; object-fit:cover;">
+                </div>
+                <div>
+                    <div style="font-family:var(--mono); color:var(--verde); font-size:1.1rem; letter-spacing:2px; margin-bottom:4px; font-weight:700;">ASTROMYKOS</div>
+                    <div style="font-size:.85rem; opacity:.6; font-family:var(--mono);">Lost Astronauta SpA</div>
+                </div>
+                <a href="https://lostastronauta.org/about/" target="_blank" style="display:inline-flex; align-items:center; gap:10px; font-family:var(--mono); font-size:.8rem; color:var(--blanco); text-decoration:none; border:1px solid rgba(255,255,255,0.2); padding:10px 20px; transition:all .3s; letter-spacing:1px; border-radius: 4px;"
+                    onmouseover="this.style.background='var(--verde)'; this.style.color='var(--negro)'; this.style.borderColor='var(--verde)';" onmouseout="this.style.background='transparent'; this.style.color='var(--blanco)'; this.style.borderColor='rgba(255,255,255,0.2)';">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    Ver perfil completo
+                </a>
+            </div>
+            <div style="background:var(--negro); padding:48px 40px; display: flex; flex-direction: column; justify-content: center;">
+                <p style="font-size:1.1rem; margin-bottom:20px; opacity:.9; line-height:1.8;">
+                    El taller es impartido por <strong style="color:var(--verde);">AstroMykos</strong>, director creativo y piloto de la nave de <strong>Lost Astronauta SpA</strong>, ecosistema de diseño estratégico, educación y producción cultural con más de <strong>25 años de trayectoria</strong> en Chile.
+                </p>
+                <p style="margin-bottom:20px;">
+                    Con formación en diseño, comunicación y metodologías activas, AstroMykos ha desarrollado tutorías educativas validada por el <strong>Ministerio de Educación de Chile</strong> y ha facilitado múltiples experiencias de aprendizaje recreativas para niños, jóvenes y adultos.
+                </p>
+                <p style="margin-bottom:0;">
+                    Su metodología combina el rigor técnico con la filosofía del <em>Rock Protónico</em>: la creatividad como partícula fundamental, el error como combustible y el territorio propio como punto de partida. Cada taller es un espacio protegido donde no existe la respuesta incorrecta.
+                </p>
+                <div style="display:flex; gap:24px; margin-top:32px; flex-wrap:wrap;">
+                    <div style="display:flex; align-items:center; gap:8px;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                        <span style="font-family:var(--mono); font-size:.8rem; opacity:.7;">+25 años de trayectoria</span>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:8px;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        <span style="font-family:var(--mono); font-size:.8rem; opacity:.7;">Validado Mineduc</span>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:8px;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        <span style="font-family:var(--mono); font-size:.8rem; opacity:.7;">Santiago, Chile</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- 07 INSCRIPCIÓN -->
     <section id="inscripcion" class="reveal" style="border-bottom: none;">
@@ -1417,19 +1300,14 @@
 
 </main>
 
-<footer style="padding-bottom: 80px;">
-    <div class="container">
-        <p style="margin-bottom: 15px; font-family: var(--font-mono); letter-spacing: 2px;">LOST ASTRONAUTA · ACADEMIA DE LA VIDA</p>
-        <div>
-            <a href="https://lostastronauta.org" target="_blank">lostastronauta.org</a> · 
-            <a href="https://lostastronauta.org/academiadelavida" target="_blank">academiadelavida</a> · 
-            <a href="https://instagram.com/lostastronauta" target="_blank">@lostastronauta</a>
-        </div>
+<footer>
+    <div class="footer-brand">LOST ASTRONAUTA · ACADEMIA DE LA VIDA</div>
+    <div>
+        <a href="https://lostastronauta.org" target="_blank">lostastronauta.org</a>
+        <a href="https://lostastronauta.org/academiadelavida" target="_blank">academiadelavida</a>
+        <a href="https://instagram.com/lostastronauta" target="_blank">@lostastronauta</a>
     </div>
 </footer>
-
-<!-- Spacer adicional para móvil -->
-<div style="height: 100px;"></div>
 
 <!-- AUDIO PLAYER -->
 <div class="audio-player">
@@ -1445,14 +1323,32 @@
 
     <div class="audio-controls">
         <button class="audio-btn" id="muteBtn" aria-label="Silenciar">
-            <svg id="volOnIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
-            <svg id="volOffIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+            <svg id="volOnIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+            </svg>
+            <svg id="volOffIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                <line x1="23" y1="9" x2="17" y2="15"/>
+                <line x1="17" y1="9" x2="23" y2="15"/>
+            </svg>
         </button>
         <input type="range" id="volumeSlider" class="volume-slider" min="0" max="1" step="0.01" value="0.3" aria-label="Volumen">
+        <button class="audio-btn" id="prevTrack" aria-label="Anterior pista">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"/>
+            </svg>
+        </button>
+        <button class="audio-btn" id="nextTrack" aria-label="Siguiente pista">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"/>
+            </svg>
+        </button>
     </div>
 
     <!-- AUDIO FILE -->
-    <audio id="bgAudio" loop>
+    <audio id="bgAudio">
         <source src="frecuencias.mp3" type="audio/mpeg">
     </audio>
 </div>
@@ -1521,6 +1417,41 @@
     const volumeSlider = document.getElementById('volumeSlider');
 
     bgAudio.volume = volumeSlider.value;
+
+    // Playlist setup
+    const playlist = ['frecuencias.mp3', 'track2.mp3', 'track3.mp3']; // Add your MP3 files here
+    let trackIndex = 0;
+    bgAudio.src = playlist[trackIndex];
+
+    // Auto-advance to next track when current ends
+    bgAudio.addEventListener('ended', () => {
+        trackIndex = (trackIndex + 1) % playlist.length;
+        bgAudio.src = playlist[trackIndex];
+        bgAudio.play();
+        // Update UI (optional)
+        audioStatus.textContent = 'Sonando';
+        playIcon.style.display = 'none';
+        pauseIcon.style.display = 'block';
+    });
+
+    // Manual track navigation
+    document.getElementById('prevTrack')?.addEventListener('click', () => {
+        trackIndex = (trackIndex - 1 + playlist.length) % playlist.length;
+        bgAudio.src = playlist[trackIndex];
+        bgAudio.play();
+        playIcon.style.display = 'none';
+        pauseIcon.style.display = 'block';
+        audioStatus.textContent = 'Sonando';
+    });
+
+    document.getElementById('nextTrack')?.addEventListener('click', () => {
+        trackIndex = (trackIndex + 1) % playlist.length;
+        bgAudio.src = playlist[trackIndex];
+        bgAudio.play();
+        playIcon.style.display = 'none';
+        pauseIcon.style.display = 'block';
+        audioStatus.textContent = 'Sonando';
+    });
 
     playPauseBtn.addEventListener('click', () => {
         if (bgAudio.paused) {
