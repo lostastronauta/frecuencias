@@ -1297,57 +1297,92 @@
 
 
                 
-                <div class="section-num">06</div>
-                <h2>Tu facilitador</h2>
+               <section id="facilitador">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-num">06</div>
+            <h2>Tu facilitador</h2>
+        </div>
+    </div>
+</section>
+
+<!-- Contenedor principal con clase para responsive -->
+<div class="facilitador-container" style="display:grid; grid-template-columns: 1fr 2fr; gap: 1px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; overflow: hidden;">
+    
+    <!-- Columna izquierda - Foto y datos -->
+    <div style="background:var(--negro); padding:48px 30px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:20px;">
+        <div style="width:140px; height:140px; border:2px solid var(--verde-border); border-radius:50%; background:var(--verde-dim); display:flex; align-items:center; justify-content:center; box-shadow:var(--glow-sm); overflow:hidden;">
+            <img src="https://i0.wp.com/lostastronauta.org/wp-content/uploads/2024/09/astromykos-ID.png?w=1600&ssl=1" 
+                 alt="AstroMykos ID" 
+                 style="width:100%; height:100%; object-fit:cover;">
+        </div>
+        <div>
+            <div style="font-family:var(--mono); color:var(--verde); font-size:1.1rem; letter-spacing:2px; margin-bottom:4px; font-weight:700;">ASTROMYKOS</div>
+            <div style="font-size:.85rem; opacity:.6; font-family:var(--mono);">Lost Astronauta SpA</div>
+        </div>
+        <a href="https://lostastronauta.org/about/" target="_blank" style="display:inline-flex; align-items:center; gap:10px; font-family:var(--mono); font-size:.8rem; color:var(--blanco); text-decoration:none; border:1px solid rgba(255,255,255,0.2); padding:10px 20px; transition:all .3s; letter-spacing:1px; border-radius: 4px;"
+            onmouseover="this.style.background='var(--verde)'; this.style.color='var(--negro)'; this.style.borderColor='var(--verde)';" onmouseout="this.style.background='transparent'; this.style.color='var(--blanco)'; this.style.borderColor='rgba(255,255,255,0.2)';">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Ver perfil completo
+        </a>
+    </div>
+
+    <!-- Columna derecha - Descripción -->
+    <div style="background:var(--negro); padding:48px 40px; display: flex; flex-direction: column; justify-content: center;">
+        <p style="font-size:1.1rem; margin-bottom:20px; opacity:.9; line-height:1.8;">
+            El taller es impartido por <strong style="color:var(--verde);">AstroMykos</strong>, director creativo y piloto de la nave de <strong>Lost Astronauta SpA</strong>, ecosistema de diseño estratégico, educación y producción cultural con más de <strong>25 años de trayectoria</strong> en Chile.
+        </p>
+        <p style="margin-bottom:20px;">
+            Con formación en diseño, comunicación y metodologías activas, AstroMykos ha desarrollado tutorías educativas validada por el <strong>Ministerio de Educación de Chile</strong> y ha facilitado múltiples experiencias de aprendizaje recreativas para niños, jóvenes y adultos.
+        </p>
+        <p style="margin-bottom:0;">
+            Su metodología combina el rigor técnico con la filosofía del <em>Rock Protónico</em>: la creatividad como partícula fundamental, el error como combustible y el territorio propio como punto de partida. Cada taller es un espacio protegido donde no existe la respuesta incorrecta.
+        </p>
+        <div style="display:flex; gap:24px; margin-top:32px; flex-wrap:wrap;">
+            <div style="display:flex; align-items:center; gap:8px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                <span style="font-family:var(--mono); font-size:.8rem; opacity:.7;">+25 años de trayectoria</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:8px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span style="font-family:var(--mono); font-size:.8rem; opacity:.7;">Validado Mineduc</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:8px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                <span style="font-family:var(--mono); font-size:.8rem; opacity:.7;">Santiago, Chile</span>
             </div>
         </div>
+    </div>
+</div>
 
-
-
-        <div style="display:grid; grid-template-columns: 1fr 2fr; gap: 1px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; overflow: hidden;">
-            <div style="background:var(--negro); padding:48px 30px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:20px;">
-                <div style="width:140px; height:140px; border:2px solid var(--verde-border); border-radius:50%; background:var(--verde-dim); display:flex; align-items:center; justify-content:center; box-shadow:var(--glow-sm); overflow:hidden;">
-                    <img src="https://i0.wp.com/lostastronauta.org/wp-content/uploads/2024/09/astromykos-ID.png?w=1600&ssl=1" 
-                         alt="AstroMykos ID" 
-                         style="width:100%; height:100%; object-fit:cover;">
-                </div>
-                <div>
-                    <div style="font-family:var(--mono); color:var(--verde); font-size:1.1rem; letter-spacing:2px; margin-bottom:4px; font-weight:700;">ASTROMYKOS</div>
-                    <div style="font-size:.85rem; opacity:.6; font-family:var(--mono);">Lost Astronauta SpA</div>
-                </div>
-                <a href="https://lostastronauta.org/about/" target="_blank" style="display:inline-flex; align-items:center; gap:10px; font-family:var(--mono); font-size:.8rem; color:var(--blanco); text-decoration:none; border:1px solid rgba(255,255,255,0.2); padding:10px 20px; transition:all .3s; letter-spacing:1px; border-radius: 4px;"
-                    onmouseover="this.style.background='var(--verde)'; this.style.color='var(--negro)'; this.style.borderColor='var(--verde)';" onmouseout="this.style.background='transparent'; this.style.color='var(--blanco)'; this.style.borderColor='rgba(255,255,255,0.2)';">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                    Ver perfil completo
-                </a>
-            </div>
-            <div style="background:var(--negro); padding:48px 40px; display: flex; flex-direction: column; justify-content: center;">
-                <p style="font-size:1.1rem; margin-bottom:20px; opacity:.9; line-height:1.8;">
-                    El taller es impartido por <strong style="color:var(--verde);">AstroMykos</strong>, director creativo y piloto de la nave de <strong>Lost Astronauta SpA</strong>, ecosistema de diseño estratégico, educación y producción cultural con más de <strong>25 años de trayectoria</strong> en Chile.
-                </p>
-                <p style="margin-bottom:20px;">
-                    Con formación en diseño, comunicación y metodologías activas, AstroMykos ha desarrollado tutorías educativas validada por el <strong>Ministerio de Educación de Chile</strong> y ha facilitado múltiples experiencias de aprendizaje recreativas para niños, jóvenes y adultos.
-                </p>
-                <p style="margin-bottom:0;">
-                    Su metodología combina el rigor técnico con la filosofía del <em>Rock Protónico</em>: la creatividad como partícula fundamental, el error como combustible y el territorio propio como punto de partida. Cada taller es un espacio protegido donde no existe la respuesta incorrecta.
-                </p>
-                <div style="display:flex; gap:24px; margin-top:32px; flex-wrap:wrap;">
-                    <div style="display:flex; align-items:center; gap:8px;">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-                        <span style="font-family:var(--mono); font-size:.8rem; opacity:.7;">+25 años de trayectoria</span>
-                    </div>
-                    <div style="display:flex; align-items:center; gap:8px;">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                        <span style="font-family:var(--mono); font-size:.8rem; opacity:.7;">Validado Mineduc</span>
-                    </div>
-                    <div style="display:flex; align-items:center; gap:8px;">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-                        <span style="font-family:var(--mono); font-size:.8rem; opacity:.7;">Santiago, Chile</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- ESTILOS RESPONSIVE - Agregar en tu <style> -->
+<style>
+@media (max-width: 768px) {
+    .facilitador-container {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .facilitador-container > div:first-child {
+        padding: 30px 20px !important;
+        border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+    }
+    
+    .facilitador-container > div:last-child {
+        padding: 30px 20px !important;
+    }
+    
+    .facilitador-container p {
+        font-size: 0.95rem !important;
+        line-height: 1.7 !important;
+    }
+    
+    .facilitador-container > div:last-child > div {
+        flex-direction: column !important;
+        gap: 12px !important;
+        margin-top: 24px !important;
+    }
+}
+</style>
 
     <!-- 07 INSCRIPCIÓN -->
     <section id="inscripcion" class="reveal" style="border-bottom: none;">
