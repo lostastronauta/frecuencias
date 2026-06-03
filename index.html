@@ -100,7 +100,7 @@
             letter-spacing: 2.5px; color: var(--verde);
             border: 1px solid var(--verde-border);
             padding: 6px 20px; margin-bottom: 30px;
-            border-radius: 20px;
+            border-radius: 20px; /* Slight pill shape */
             background: rgba(6,255,35,0.02);
             backdrop-filter: blur(4px);
         }
@@ -129,8 +129,8 @@
         .carousel-wrap {
             max-width: 1100px; margin: 0 auto;
             position: relative;
-            border-radius: 8px;
-            padding: 4px;
+            border-radius: 8px; /* Slightly rounded for premium feel */
+            padding: 4px; /* Inner border effect */
             background: linear-gradient(180deg, rgba(6,255,35,0.1) 0%, rgba(26,26,26,0) 100%);
         }
 
@@ -148,7 +148,7 @@
             position: absolute; inset: 0;
             display: flex; align-items: center; justify-content: center;
             opacity: 0;
-            transform: scale(1.05);
+            transform: scale(1.05); /* Subtle zoom effect */
             transition: opacity .8s ease, transform .8s ease;
             background: var(--gris);
         }
@@ -214,7 +214,7 @@
         }
 
         .dot {
-            width: 12px; height: 4px;
+            width: 12px; height: 4px; /* Pill shaped dots */
             border-radius: 2px;
             background: rgba(255,255,255,0.15);
             border: none;
@@ -304,7 +304,7 @@
             border: 1px solid rgba(255,255,255,0.05);
             border-radius: 4px;
             margin-top: 40px;
-            overflow: hidden;
+            overflow: hidden; /* For border radius */
         }
 
         .card {
@@ -579,6 +579,110 @@
         .hero-sub      { animation-delay: .2s; }
         .carousel-wrap { animation-delay: .3s; }
         .stats         { animation-delay: .4s; }
+
+        /* ─── AUDIO PLAYER CUSTOM ─── */
+        .audio-player {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: rgba(6,6,6,0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--verde-border);
+            padding: 12px 20px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            z-index: 999;
+            box-shadow: var(--glow-sm);
+            transition: all 0.3s ease;
+        }
+
+        .audio-player:hover {
+            border-color: var(--verde);
+            box-shadow: var(--glow);
+        }
+
+        .audio-info {
+            display: flex;
+            flex-direction: column;
+            min-width: 100px;
+        }
+
+        .audio-title {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            color: var(--verde);
+            font-weight: 700;
+            letter-spacing: 1px;
+            line-height: 1.2;
+        }
+
+        .audio-status {
+            font-size: 0.65rem;
+            opacity: 0.6;
+            font-family: var(--mono);
+        }
+
+        .audio-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .audio-btn {
+            background: none;
+            border: none;
+            color: var(--blanco);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.8;
+            transition: all 0.2s;
+            padding: 0;
+        }
+
+        .audio-btn:hover {
+            opacity: 1;
+            color: var(--verde);
+            transform: scale(1.1);
+        }
+
+        .audio-btn svg { width: 18px; height: 18px; }
+
+        /* Custom Range Slider */
+        .volume-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 60px;
+            height: 4px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 2px;
+            outline: none;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--verde);
+            cursor: pointer;
+            box-shadow: var(--glow-sm);
+        }
+
+        @media (max-width: 640px) {
+            .audio-player {
+                bottom: 16px;
+                right: 16px;
+                left: 16px;
+                justify-content: space-between;
+                border-radius: 12px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1204,6 +1308,32 @@
     </div>
 </footer>
 
+<!-- AUDIO PLAYER -->
+<div class="audio-player">
+    <button class="audio-btn" id="playPauseBtn" aria-label="Reproducir/Pausar">
+        <svg id="playIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        <svg id="pauseIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+    </button>
+    
+    <div class="audio-info">
+        <span class="audio-title">FRECUENCIAS</span>
+        <span class="audio-status" id="audioStatus">Pausado</span>
+    </div>
+
+    <div class="audio-controls">
+        <button class="audio-btn" id="muteBtn" aria-label="Silenciar">
+            <svg id="volOnIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+            <svg id="volOffIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+        </button>
+        <input type="range" id="volumeSlider" class="volume-slider" min="0" max="1" step="0.01" value="0.3" aria-label="Volumen">
+    </div>
+
+    <!-- AUDIO FILE -->
+    <audio id="bgAudio" loop>
+        <source src="frecuencias.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
 <script>
     // --- Carrusel ---
     const slides = document.querySelectorAll('.slide');
@@ -1255,6 +1385,56 @@
     });
 
     revealElements.forEach(el => revealObserver.observe(el));
+
+    // --- Audio Player ---
+    const bgAudio = document.getElementById('bgAudio');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const playIcon = document.getElementById('playIcon');
+    const pauseIcon = document.getElementById('pauseIcon');
+    const audioStatus = document.getElementById('audioStatus');
+    const muteBtn = document.getElementById('muteBtn');
+    const volOnIcon = document.getElementById('volOnIcon');
+    const volOffIcon = document.getElementById('volOffIcon');
+    const volumeSlider = document.getElementById('volumeSlider');
+
+    bgAudio.volume = volumeSlider.value;
+
+    playPauseBtn.addEventListener('click', () => {
+        if (bgAudio.paused) {
+            bgAudio.play();
+            playIcon.style.display = 'none';
+            pauseIcon.style.display = 'block';
+            audioStatus.textContent = 'Sonando';
+        } else {
+            bgAudio.pause();
+            playIcon.style.display = 'block';
+            pauseIcon.style.display = 'none';
+            audioStatus.textContent = 'Pausado';
+        }
+    });
+
+    muteBtn.addEventListener('click', () => {
+        bgAudio.muted = !bgAudio.muted;
+        updateVolumeIcons();
+    });
+
+    volumeSlider.addEventListener('input', (e) => {
+        bgAudio.volume = e.target.value;
+        if (bgAudio.volume > 0 && bgAudio.muted) {
+            bgAudio.muted = false;
+        }
+        updateVolumeIcons();
+    });
+
+    function updateVolumeIcons() {
+        if (bgAudio.muted || bgAudio.volume == 0) {
+            volOnIcon.style.display = 'none';
+            volOffIcon.style.display = 'block';
+        } else {
+            volOnIcon.style.display = 'block';
+            volOffIcon.style.display = 'none';
+        }
+    }
 </script>
 
 </body>
