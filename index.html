@@ -5,548 +5,1133 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Taller Frecuencias | Lost Astronauta · Academia de la Vida</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
         :root {
-            /* BRANDKIT LOST ASTRONAUTA */
-            --verde-protonico: #06FF23;
-            --vacio-sideral: #060606;
-            --blanco-cosmico: #F0F0EE;
-            --gris-nave: #1A1A1A;
-            
-            /* Variables derivadas */
-            --verde-protonico-dim: rgba(6, 255, 35, 0.1);
-            --verde-protonico-border: rgba(6, 255, 35, 0.3);
-            --glow-verde: 0 0 20px rgba(6, 255, 35, 0.4);
-            --font-mono: 'Courier New', Courier, monospace;
-            --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            --verde: #06FF23;
+            --negro: #060606;
+            --blanco: #F0F0EE;
+            --gris: #1A1A1A;
+            --gris-mid: #2a2a2a;
+            --verde-dim: rgba(6,255,35,0.08);
+            --verde-border: rgba(6,255,35,0.25);
+            --glow: 0 0 24px rgba(6,255,35,0.35);
+            --glow-sm: 0 0 10px rgba(6,255,35,0.25);
+            --mono: 'Space Mono', monospace;
+            --sans: 'DM Sans', sans-serif;
         }
 
-        * { 
-            box-sizing: border-box; 
-            margin: 0; 
-            padding: 0; 
-        }
-        
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
         body {
-            background-color: var(--vacio-sideral);
-            color: var(--blanco-cosmico);
-            font-family: var(--font-sans);
-            line-height: 1.6;
+            background: var(--negro);
+            color: var(--blanco);
+            font-family: var(--sans);
+            line-height: 1.65;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* NAV */
-        nav {
-            padding: 20px 0;
-            border-bottom: 1px solid var(--gris-nave);
-            position: sticky;
-            top: 0;
-            background: rgba(6, 6, 6, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 100;
-        }
-        
-        .nav-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        
-        .brand {
-            font-family: var(--font-mono);
-            font-weight: bold;
-            letter-spacing: 3px;
-            color: var(--verde-protonico);
-            font-size: 1.2rem;
-            text-shadow: var(--glow-verde);
-        }
-        
-        .nav-links a {
-            color: var(--blanco-cosmico);
-            text-decoration: none;
-            margin-left: 20px;
-            font-size: 0.9rem;
-            font-family: var(--font-mono);
-            transition: all 0.3s;
-            opacity: 0.8;
-        }
-        
-        .nav-links a:hover { 
-            color: var(--verde-protonico);
-            opacity: 1;
-            text-shadow: var(--glow-verde);
-        }
-
-        /* HERO */
-        header {
-            text-align: center;
-            padding: 80px 0 50px;
-        }
-        
-        .tag {
-            color: var(--verde-protonico);
-            font-family: var(--font-mono);
-            letter-spacing: 2px;
-            font-size: 0.85rem;
-            margin-bottom: 15px;
-            display: inline-block;
-            padding: 5px 15px;
-            border: 1px solid var(--verde-protonico-border);
-        }
-        
-        h1 {
-            font-family: var(--font-mono);
-            font-size: 3.5rem;
-            letter-spacing: 4px;
-            margin-bottom: 15px;
-            color: var(--blanco-cosmico);
-            text-transform: uppercase;
-        }
-        
-        .subtitle {
-            color: var(--blanco-cosmico);
-            opacity: 0.7;
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto 40px;
-        }
-        
-        .hero-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1px;
-            background: var(--gris-nave);
-            border: 1px solid var(--gris-nave);
-            margin-top: 30px;
-        }
-        
-        .hero-item {
-            background: var(--vacio-sideral);
-            text-align: center;
-            padding: 25px 15px;
-            transition: all 0.3s;
-        }
-        
-        .hero-item:hover {
-            background: var(--gris-nave);
-        }
-        
-        .hero-item strong {
-            display: block;
-            color: var(--verde-protonico);
-            font-size: 1.4rem;
-            margin-bottom: 5px;
-            font-family: var(--font-mono);
-        }
-        
-        .hero-item span { 
-            font-size: 0.85rem; 
-            color: var(--blanco-cosmico);
-            opacity: 0.7;
-        }
-
-        /* SECTIONS */
-        section { 
-            padding: 60px 0; 
-            border-bottom: 1px solid var(--gris-nave);
-        }
-        
-        h2 {
-            font-family: var(--font-mono);
-            color: var(--verde-protonico);
-            font-size: 1.5rem;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            letter-spacing: 2px;
-        }
-        
-        h2::before {
-            content: "0";
-            color: var(--verde-protonico);
-            font-weight: bold;
+        /* ─── RUIDO DE FONDO ─── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
             opacity: 0.5;
         }
-        
-        p { 
-            margin-bottom: 18px; 
-            color: var(--blanco-cosmico);
-            opacity: 0.85;
-            font-size: 1rem;
+
+        /* ─── NAV ─── */
+        nav {
+            position: sticky; top: 0; z-index: 200;
+            background: rgba(6,6,6,0.92);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--gris);
+            padding: 0 24px;
         }
 
-        /* CARDS */
+        .nav-inner {
+            max-width: 1100px; margin: 0 auto;
+            display: flex; align-items: center;
+            justify-content: space-between;
+            height: 60px; gap: 16px; flex-wrap: wrap;
+        }
+
+        .brand {
+            font-family: var(--mono);
+            font-size: 1rem; letter-spacing: 3px;
+            color: var(--verde);
+            text-shadow: var(--glow-sm);
+        }
+
+        .nav-links { display: flex; gap: 4px; flex-wrap: wrap; }
+
+        .nav-links a {
+            color: var(--blanco); opacity: .65;
+            text-decoration: none;
+            font-family: var(--mono); font-size: .75rem;
+            letter-spacing: 1.5px; padding: 6px 12px;
+            border-radius: 2px;
+            transition: all .25s;
+        }
+        .nav-links a:hover { opacity: 1; color: var(--verde); background: var(--verde-dim); }
+
+        /* ─── HERO ─── */
+        .hero {
+            position: relative; overflow: hidden;
+            padding: 70px 24px 0;
+            text-align: center;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            font-family: var(--mono); font-size: .8rem;
+            letter-spacing: 2.5px; color: var(--verde);
+            border: 1px solid var(--verde-border);
+            padding: 5px 18px; margin-bottom: 22px;
+        }
+
+        h1 {
+            font-family: var(--mono);
+            font-size: clamp(2.4rem, 7vw, 5rem);
+            letter-spacing: 6px; line-height: 1.1;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        h1 span { color: var(--verde); text-shadow: var(--glow); }
+
+        .hero-sub {
+            opacity: .65; font-size: 1.05rem;
+            max-width: 540px; margin: 0 auto 50px;
+        }
+
+        /* ─── CARRUSEL ─── */
+        .carousel-wrap {
+            max-width: 1100px; margin: 0 auto;
+            position: relative;
+        }
+
+        .carousel {
+            position: relative;
+            width: 100%; aspect-ratio: 16/7;
+            overflow: hidden;
+            border: 1px solid var(--verde-border);
+            box-shadow: var(--glow);
+        }
+
+        .slide {
+            position: absolute; inset: 0;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0;
+            transition: opacity .7s ease;
+            background: var(--gris);
+        }
+
+        .slide.active { opacity: 1; z-index: 1; }
+
+        /* Placeholders visuales hasta tener fotos reales */
+        .slide-placeholder {
+            width: 100%; height: 100%;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            gap: 16px;
+            background: linear-gradient(135deg, #0d0d0d 0%, #111 50%, #0a0a0a 100%);
+        }
+
+        .slide-placeholder svg { opacity: .18; }
+
+        .slide-placeholder .slide-label {
+            font-family: var(--mono); font-size: .75rem;
+            letter-spacing: 3px; color: var(--verde);
+            opacity: .5; text-transform: uppercase;
+        }
+
+        .slide-placeholder .slide-num {
+            font-family: var(--mono); font-size: .65rem;
+            color: var(--blanco); opacity: .2;
+        }
+
+        /* Zona de imagen real — cuando pongas tus fotos reemplaza .slide-placeholder con <img> */
+        .slide img {
+            width: 100%; height: 100%;
+            object-fit: cover; display: block;
+        }
+
+        /* Controles */
+        .carousel-btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            z-index: 10;
+            background: rgba(6,6,6,.75);
+            border: 1px solid var(--verde-border);
+            color: var(--verde);
+            width: 46px; height: 46px;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: all .2s;
+            backdrop-filter: blur(6px);
+        }
+        .carousel-btn:hover { background: var(--verde-dim); box-shadow: var(--glow-sm); }
+        .carousel-btn.prev { left: 14px; }
+        .carousel-btn.next { right: 14px; }
+
+        .carousel-dots {
+            display: flex; justify-content: center;
+            gap: 8px; padding: 16px 0 0;
+        }
+
+        .dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--gris-mid);
+            border: 1px solid var(--verde-border);
+            cursor: pointer; transition: all .25s;
+        }
+        .dot.active { background: var(--verde); box-shadow: var(--glow-sm); }
+
+        /* ─── STATS GRID ─── */
+        .stats {
+            max-width: 1100px; margin: 50px auto 0;
+            display: grid;
+            grid-template-columns: repeat(6,1fr);
+            gap: 1px; background: var(--gris);
+            border: 1px solid var(--gris);
+        }
+
+        .stat {
+            background: var(--negro);
+            padding: 22px 12px;
+            text-align: center;
+            transition: background .2s;
+        }
+        .stat:hover { background: var(--gris); }
+
+        .stat strong {
+            display: block;
+            font-family: var(--mono); font-size: 1.3rem;
+            color: var(--verde); margin-bottom: 5px;
+        }
+        .stat span { font-size: .8rem; opacity: .6; }
+
+        /* ─── LAYOUT GENERAL ─── */
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        section { padding: 70px 0; border-bottom: 1px solid var(--gris); }
+
+        .section-head {
+            display: flex; align-items: center; gap: 14px;
+            margin-bottom: 32px;
+        }
+
+        .section-icon {
+            width: 42px; height: 42px; flex-shrink: 0;
+            background: var(--verde-dim);
+            border: 1px solid var(--verde-border);
+            border-radius: 4px;
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        .section-icon svg { width: 22px; height: 22px; }
+
+        h2 {
+            font-family: var(--mono);
+            font-size: 1.35rem; letter-spacing: 2px;
+            color: var(--verde);
+        }
+
+        .section-num {
+            font-family: var(--mono); font-size: .75rem;
+            color: var(--verde); opacity: .4;
+        }
+
+        p { margin-bottom: 16px; opacity: .82; font-size: .98rem; }
+        p:last-child { margin-bottom: 0; }
+        strong { color: var(--blanco); opacity: 1; }
+
+        /* ─── CARDS ─── */
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1px;
-            background: var(--gris-nave);
-            margin-top: 30px;
-            border: 1px solid var(--gris-nave);
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1px; background: var(--gris);
+            border: 1px solid var(--gris);
+            margin-top: 28px;
         }
-        
+
         .card {
-            background: var(--vacio-sideral);
-            padding: 30px;
-            transition: all 0.3s;
+            background: var(--negro);
+            padding: 28px 26px;
+            transition: background .2s;
         }
-        
-        .card:hover { 
-            background: var(--gris-nave);
-            transform: translateY(-2px);
+        .card:hover { background: var(--gris); }
+
+        .card-icon {
+            width: 36px; height: 36px;
+            background: var(--verde-dim);
+            border: 1px solid var(--verde-border);
+            border-radius: 3px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 14px;
         }
-        
+        .card-icon svg { width: 18px; height: 18px; }
+
         .card h3 {
-            color: var(--verde-protonico);
-            font-size: 1rem;
-            margin-bottom: 12px;
-            font-family: var(--font-mono);
-            letter-spacing: 1px;
-        }
-        
-        .card p {
-            font-size: 0.95rem;
-            margin: 0;
+            font-family: var(--mono); font-size: .9rem;
+            letter-spacing: 1px; color: var(--verde);
+            margin-bottom: 10px;
         }
 
-        /* TIMELINE */
-        .timeline { 
-            border-left: 2px solid var(--verde-protonico-border); 
-            padding-left: 30px; 
-            margin: 30px 0; 
-        }
-        
-        .timeline-item { 
-            position: relative; 
-            margin-bottom: 35px; 
-        }
-        
-        .timeline-item::before {
-            content: "";
-            position: absolute;
-            left: -36px;
-            top: 5px;
-            width: 12px;
-            height: 12px;
-            background: var(--verde-protonico);
-            border-radius: 50%;
-            box-shadow: var(--glow-verde);
-        }
-        
-        .time { 
-            color: var(--verde-protonico); 
-            font-weight: 600; 
-            font-family: var(--font-mono); 
-            font-size: 1rem;
-            margin-bottom: 5px;
-        }
-        
-        .title { 
-            font-weight: 600; 
-            margin: 8px 0;
-            color: var(--blanco-cosmico);
-            font-size: 1.1rem;
-        }
-        
-        .desc { 
-            color: var(--blanco-cosmico);
-            opacity: 0.7;
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
+        .card p { font-size: .9rem; margin: 0; }
 
-        /* CTA BOX */
-        .cta-box {
-            background: var(--gris-nave);
-            border: 2px solid var(--verde-protonico);
-            padding: 50px 30px;
-            text-align: center;
-            margin: 50px 0;
-            box-shadow: var(--glow-verde);
-        }
-        
-        .cta-box h2 {
-            justify-content: center;
-            margin-bottom: 15px;
-        }
-        
-        .price { 
-            font-size: 3rem; 
-            font-weight: bold; 
-            color: var(--verde-protonico);
-            margin: 20px 0;
-            font-family: var(--font-mono);
-            text-shadow: var(--glow-verde);
-        }
-        
-        .price span {
-            font-size: 1rem;
-            opacity: 0.7;
-            font-weight: normal;
-        }
-        
-        .btn {
-            display: inline-block;
-            background: var(--verde-protonico);
-            color: var(--vacio-sideral);
-            padding: 16px 35px;
-            border-radius: 0;
-            text-decoration: none;
-            font-weight: 700;
-            font-family: var(--font-mono);
-            letter-spacing: 2px;
-            margin: 10px;
-            transition: all 0.3s;
-            border: 2px solid var(--verde-protonico);
-            text-transform: uppercase;
-        }
-        
-        .btn:hover { 
-            background: transparent;
-            color: var(--verde-protonico);
-            box-shadow: var(--glow-verde);
-            transform: translateY(-3px);
-        }
-        
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--verde-protonico);
-            color: var(--verde-protonico);
-        }
-        
-        .btn-outline:hover { 
-            background: var(--verde-protonico);
-            color: var(--vacio-sideral);
-        }
-        
-        .note { 
-            font-size: 0.85rem; 
-            color: var(--blanco-cosmico);
-            opacity: 0.6;
-            margin-top: 20px;
-            font-family: var(--font-mono);
-        }
-
-        /* FOOTER */
-        footer {
-            text-align: center;
-            padding: 50px 0;
-            border-top: 1px solid var(--gris-nave);
-            color: var(--blanco-cosmico);
-            opacity: 0.6;
-            font-size: 0.85rem;
-        }
-        
-        footer a { 
-            color: var(--verde-protonico);
-            text-decoration: none;
-            margin: 0 10px;
-            font-family: var(--font-mono);
-            transition: all 0.3s;
-        }
-        
-        footer a:hover {
-            text-shadow: var(--glow-verde);
-            opacity: 1;
-        }
-
-        /* HIGHLIGHT BOX */
+        /* ─── HIGHLIGHT BOX ─── */
         .highlight-box {
-            background: var(--verde-protonico-dim);
-            border-left: 3px solid var(--verde-protonico);
-            padding: 25px;
-            margin: 30px 0;
-        }
-        
-        .highlight-box p {
-            margin: 10px 0;
-            font-family: var(--font-mono);
-            font-size: 0.95rem;
-        }
-        
-        .highlight-box strong {
-            color: var(--verde-protonico);
+            background: var(--verde-dim);
+            border-left: 3px solid var(--verde);
+            padding: 26px 28px; margin: 28px 0;
         }
 
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            h1 { font-size: 2.2rem; }
-            h2 { font-size: 1.2rem; }
-            .hero-grid { grid-template-columns: 1fr 1fr; }
-            .nav-inner { flex-direction: column; gap: 15px; }
-            .nav-links a { margin: 0 10px; }
-            .timeline { padding-left: 20px; }
-            .price { font-size: 2.2rem; }
+        .pillar {
+            display: flex; gap: 14px; align-items: flex-start;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(6,255,35,.08);
         }
+        .pillar:last-child { border-bottom: none; padding-bottom: 0; }
+
+        .pillar-icon {
+            width: 32px; height: 32px; flex-shrink: 0;
+            background: rgba(6,255,35,.12);
+            border-radius: 3px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .pillar-icon svg { width: 16px; height: 16px; }
+
+        .pillar p { margin: 0; font-size: .9rem; }
+        .pillar strong { color: var(--verde); }
+
+        /* ─── TIMELINE ─── */
+        .timeline {
+            border-left: 2px solid var(--verde-border);
+            padding-left: 32px; margin-top: 28px;
+        }
+
+        .tl-item {
+            position: relative; margin-bottom: 32px;
+            display: grid; grid-template-columns: 90px 1fr;
+            gap: 16px; align-items: start;
+        }
+
+        .tl-item::before {
+            content: '';
+            position: absolute; left: -38px; top: 6px;
+            width: 12px; height: 12px;
+            background: var(--verde); border-radius: 50%;
+            box-shadow: var(--glow);
+        }
+
+        .tl-time {
+            font-family: var(--mono); font-size: .85rem;
+            color: var(--verde); padding-top: 2px;
+        }
+
+        .tl-body {}
+
+        .tl-title {
+            font-weight: 600; font-size: 1rem;
+            margin-bottom: 5px; color: var(--blanco);
+            display: flex; align-items: center; gap: 8px;
+        }
+
+        .tl-icon { opacity: .75; }
+
+        .tl-desc { font-size: .88rem; opacity: .65; line-height: 1.65; }
+
+        /* Pizza highlight */
+        .pizza-block {
+            background: rgba(6,255,35,.06);
+            border: 1px solid var(--verde-border);
+            padding: 16px 20px; margin-top: 8px;
+            border-radius: 2px;
+        }
+        .pizza-block p { margin: 0; font-size: .88rem; }
+        .pizza-block .pizza-title {
+            font-family: var(--mono); font-size: .8rem;
+            color: var(--verde); letter-spacing: 1px;
+            margin-bottom: 8px; display: flex; align-items: center; gap: 8px;
+        }
+
+        /* ─── CTA / INVERSIÓN ─── */
+        .cta-box {
+            background: var(--gris);
+            border: 2px solid var(--verde);
+            padding: 56px 40px;
+            text-align: center;
+            margin: 56px 0;
+            box-shadow: var(--glow);
+            position: relative; overflow: hidden;
+        }
+
+        .cta-box::before {
+            content: '';
+            position: absolute; top: -60px; right: -60px;
+            width: 200px; height: 200px;
+            background: radial-gradient(circle, rgba(6,255,35,.07) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .inversion-label {
+            font-family: var(--mono); font-size: .75rem;
+            letter-spacing: 3px; color: var(--verde); opacity: .6;
+            margin-bottom: 8px;
+        }
+
+        .inversion-amount {
+            font-family: var(--mono); font-size: clamp(2.5rem, 6vw, 4rem);
+            color: var(--verde); font-weight: 700;
+            text-shadow: var(--glow); line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .inversion-sub {
+            font-size: .9rem; opacity: .5;
+            margin-bottom: 32px;
+            font-family: var(--mono);
+        }
+
+        .btn-group { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px; }
+
+        .btn {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: var(--verde); color: var(--negro);
+            padding: 15px 32px; text-decoration: none;
+            font-weight: 700; font-family: var(--mono);
+            font-size: .85rem; letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 2px solid var(--verde);
+            transition: all .25s;
+        }
+        .btn:hover { background: transparent; color: var(--verde); box-shadow: var(--glow); transform: translateY(-2px); }
+
+        .btn-outline {
+            background: transparent; border: 2px solid var(--verde);
+            color: var(--verde);
+        }
+        .btn-outline:hover { background: var(--verde); color: var(--negro); }
+
+        .cta-note {
+            font-size: .8rem; font-family: var(--mono);
+            opacity: .45; letter-spacing: 1px;
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            text-align: center; padding: 48px 24px;
+            border-top: 1px solid var(--gris);
+        }
+
+        .footer-brand {
+            font-family: var(--mono); letter-spacing: 3px;
+            font-size: .85rem; margin-bottom: 16px;
+            color: var(--verde); opacity: .7;
+        }
+
+        footer a {
+            color: var(--verde); text-decoration: none;
+            font-family: var(--mono); font-size: .8rem;
+            margin: 0 10px; opacity: .5; transition: opacity .2s;
+        }
+        footer a:hover { opacity: 1; }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 900px) {
+            .stats { grid-template-columns: repeat(3,1fr); }
+        }
+        @media (max-width: 640px) {
+            h1 { letter-spacing: 3px; }
+            .stats { grid-template-columns: repeat(2,1fr); }
+            .tl-item { grid-template-columns: 1fr; gap: 4px; }
+            .tl-time { font-size: .8rem; }
+            .carousel { aspect-ratio: 4/3; }
+            .nav-links { display: none; }
+            .cta-box { padding: 36px 20px; }
+        }
+
+        /* ─── ANIMACIÓN ENTRADA ─── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .hero-tag, h1, .hero-sub, .carousel-wrap, .stats {
+            animation: fadeUp .7s ease both;
+        }
+        h1         { animation-delay: .1s; }
+        .hero-sub  { animation-delay: .2s; }
+        .carousel-wrap { animation-delay: .3s; }
+        .stats     { animation-delay: .4s; }
     </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
-    <div class="container nav-inner">
+    <div class="nav-inner">
         <div class="brand">LOST.ASTRONAUTA</div>
         <div class="nav-links">
             <a href="#objetivo">OBJETIVO</a>
+            <a href="#metodologia">MÉTODO</a>
             <a href="#jornada">JORNADA</a>
+            <a href="#aprendizajes">LOGROS</a>
             <a href="#padres">PADRES</a>
+            <a href="#facilitador">FACILITADOR</a>
             <a href="#inscripcion">INSCRIPCIÓN</a>
         </div>
     </div>
 </nav>
 
-<header>
-    <div class="container">
-        <span class="tag">ACADEMIA DE LA VIDA · INVIERNO 2026</span>
-        <h1>Taller Frecuencias</h1>
-        <p class="subtitle">Exploración musical intensiva · Jornada completa · Nysa Arts Studio</p>
-        
-        <div class="hero-grid">
-            <div class="hero-item"><strong>10:00 – 17:00</strong><span>Jornada completa</span></div>
-            <div class="hero-item"><strong>8 – 14 años</strong><span>Exploradores</span></div>
-            <div class="hero-item"><strong>$30.000</strong><span>Valor por persona</span></div>
-            <div class="hero-item"><strong>Máx. 12</strong><span>Cupos limitados</span></div>
-            <div class="hero-item"><strong>Julio 2026</strong><span>Fecha por confirmar</span></div>
-            <div class="hero-item"><strong>Nysa Arts</strong><span>Estudio profesional</span></div>
-        </div>
-    </div>
-</header>
+<!-- HERO -->
+<div class="hero">
+    <span class="hero-tag">ACADEMIA DE LA VIDA · INVIERNO 2026</span>
+    <h1>Taller <span>Frecuencias</span></h1>
+    <p class="hero-sub">Exploración musical intensiva · Jornada completa · Nysa Arts Studio</p>
 
+    <!-- CARRUSEL -->
+    <div class="carousel-wrap">
+        <div class="carousel" id="carousel">
+
+            <!-- SLIDE 1 — reemplaza .slide-placeholder con <img src="tu-foto.jpg"> -->
+            <div class="slide active">
+                <div class="slide-placeholder">
+                    <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="1">
+                        <circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+                    </svg>
+                    <span class="slide-label">Imagen 01 — Portada del taller</span>
+                    <span class="slide-num">[ Reemplaza con tu fotografía ]</span>
+                </div>
+            </div>
+
+            <!-- SLIDE 2 -->
+            <div class="slide">
+                <div class="slide-placeholder">
+                    <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="1">
+                        <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
+                    </svg>
+                    <span class="slide-label">Imagen 02 — Exploración instrumental</span>
+                    <span class="slide-num">[ Reemplaza con tu fotografía ]</span>
+                </div>
+            </div>
+
+            <!-- SLIDE 3 -->
+            <div class="slide">
+                <div class="slide-placeholder">
+                    <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="1">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                    <span class="slide-label">Imagen 03 — Trabajo en equipo</span>
+                    <span class="slide-num">[ Reemplaza con tu fotografía ]</span>
+                </div>
+            </div>
+
+            <!-- SLIDE 4 -->
+            <div class="slide">
+                <div class="slide-placeholder">
+                    <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="1">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                    <span class="slide-label">Imagen 04 — Muestra final</span>
+                    <span class="slide-num">[ Reemplaza con tu fotografía ]</span>
+                </div>
+            </div>
+
+            <!-- SLIDE 5 -->
+            <div class="slide">
+                <div class="slide-placeholder">
+                    <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="1">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+                    </svg>
+                    <span class="slide-label">Imagen 05 — Kit del Explorador</span>
+                    <span class="slide-num">[ Reemplaza con tu fotografía ]</span>
+                </div>
+            </div>
+
+            <button class="carousel-btn prev" id="prev" aria-label="Anterior">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button class="carousel-btn next" id="next" aria-label="Siguiente">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+        </div>
+
+        <div class="carousel-dots" id="dots"></div>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats container">
+        <div class="stat"><strong>10:00–17:00</strong><span>Jornada completa</span></div>
+        <div class="stat"><strong>8–14 años</strong><span>Exploradores</span></div>
+        <div class="stat"><strong>$30.000</strong><span>Inversión por persona</span></div>
+        <div class="stat"><strong>Máx. 12</strong><span>Cupos limitados</span></div>
+        <div class="stat"><strong>Julio 2026</strong><span>Fecha por confirmar</span></div>
+        <div class="stat"><strong>Nysa Arts</strong><span>Estudio profesional</span></div>
+    </div>
+</div>
+
+<!-- MAIN -->
 <main class="container">
+
+    <!-- 01 OBJETIVO -->
     <section id="objetivo">
-        <h2>01 Objetivo del taller</h2>
+        <div class="section-head">
+            <div class="section-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="1.8">
+                    <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>
+                </svg>
+            </div>
+            <div>
+                <div class="section-num">01</div>
+                <h2>Objetivo del taller</h2>
+            </div>
+        </div>
+
         <p>Proporcionar a niños y jóvenes de 8 a 14 años una experiencia de exploración musical integrada que conecte el sonido con el cuerpo, las emociones y la capacidad creativa propia, en un entorno de estudio profesional que eleva el valor percibido de la experiencia.</p>
         <p>El taller no busca formar músicos. Busca que cada participante descubra su relación personal con la música y vuelva a casa habiendo creado algo que no existía antes de ese día.</p>
-        
+
         <div class="card-grid">
-            <div class="card"><h3>Objetivo 01</h3><p>Reconocer géneros musicales y sus características emocionales y físicas.</p></div>
-            <div class="card"><h3>Objetivo 02</h3><p>Explorar instrumentos reales: guitarra, bajo, batería y teclado. Sin nivel previo.</p></div>
-            <div class="card"><h3>Objetivo 03</h3><p>Conectar el sonido con el cuerpo y las emociones a través de escucha activa.</p></div>
-            <div class="card"><h3>Objetivo 04</h3><p>Crear una pieza musical colectiva simple al final de la jornada.</p></div>
-            <div class="card"><h3>Objetivo 05</h3><p>Identificar el instrumento o género con el que cada participante resonó más.</p></div>
+            <div class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2">
+                        <path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
+                    </svg>
+                </div>
+                <h3>Objetivo 01</h3>
+                <p>Reconocer géneros musicales y sus características emocionales y físicas.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2">
+                        <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
+                    </svg>
+                </div>
+                <h3>Objetivo 02</h3>
+                <p>Explorar instrumentos reales: guitarra, bajo, batería y teclado. Sin nivel previo.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                    </svg>
+                </div>
+                <h3>Objetivo 03</h3>
+                <p>Conectar el sonido con el cuerpo y las emociones a través de escucha activa.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                </div>
+                <h3>Objetivo 04</h3>
+                <p>Crear y grabar una pieza musical colectiva simple al final de la jornada.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                </div>
+                <h3>Objetivo 05</h3>
+                <p>Identificar el instrumento o género con el que cada participante resonó más.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        <path d="M9 12l2 2 4-4"/>
+                    </svg>
+                </div>
+                <h3>Objetivo 06</h3>
+                <p>Disfrutar el aprendizaje en un ambiente seguro, libre de juicio, donde cada participante puede ser exactamente quien es.</p>
+            </div>
         </div>
     </section>
 
+    <!-- 02 METODOLOGÍA -->
     <section id="metodologia">
-        <h2>02 Metodología</h2>
-        <p>El taller se estructura bajo la metodología <strong>Academia de la Vida</strong>, línea educativa de Lost Astronauta con 25 años de trayectoria y programas validados por el Ministerio de Educación de Chile.</p>
-        
+        <div class="section-head">
+            <div class="section-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="1.8">
+                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                </svg>
+            </div>
+            <div>
+                <div class="section-num">02</div>
+                <h2>Metodología</h2>
+            </div>
+        </div>
+
+        <p>El taller se estructura bajo la metodología <strong>Academia de la Vida</strong>, línea educativa de Lost Astronauta con 25 años de trayectoria y experiencia de tutor validado por el Ministerio de Educación de Chile.</p>
+
         <div class="highlight-box">
-            <p><strong>Pilar 01:</strong> Planificación modular. Cada bloque es autocontenido y adaptable al grupo en tiempo real.</p>
-            <p><strong>Pilar 02:</strong> Espacio protegido. No hay respuestas incorrectas. El error es parte del aprendizaje.</p>
-            <p><strong>Pilar 03:</strong> Evidencia de impacto. Cada participante recibe un registro tangible de lo que creó.</p>
+            <div class="pillar">
+                <div class="pillar-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+                    </svg>
+                </div>
+                <p><strong>Pilar 01 — Planificación modular.</strong> Cada bloque es autocontenido y adaptable al grupo en tiempo real.</p>
+            </div>
+            <div class="pillar">
+                <div class="pillar-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                </div>
+                <p><strong>Pilar 02 — Espacio protegido.</strong> No hay respuestas incorrectas. El error es parte del aprendizaje.</p>
+            </div>
+            <div class="pillar">
+                <div class="pillar-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                    </svg>
+                </div>
+                <p><strong>Pilar 03 — Evidencia de impacto.</strong> Cada participante recibe un registro tangible de lo que creó.</p>
+            </div>
         </div>
     </section>
 
+    <!-- 03 JORNADA -->
     <section id="jornada">
-        <h2>03 Bitácora de la jornada</h2>
+        <div class="section-head">
+            <div class="section-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="1.8">
+                    <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                </svg>
+            </div>
+            <div>
+                <div class="section-num">03</div>
+                <h2>Bitácora de la jornada</h2>
+            </div>
+        </div>
+
         <div class="timeline">
-            <div class="timeline-item">
-                <div class="time">10:00</div>
-                <div class="title">Bienvenida y acuerdos</div>
-                <div class="desc">Presentación del facilitador y el espacio. Acuerdos de convivencia. Dinámica: "¿Qué canción describe cómo llegaste hoy?"</div>
+
+            <div class="tl-item">
+                <div class="tl-time">10:00</div>
+                <div class="tl-body">
+                    <div class="tl-title">
+                        <svg class="tl-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        Bienvenida y acuerdos
+                    </div>
+                    <div class="tl-desc">Presentación del facilitador y el espacio. Acuerdos de convivencia. Dinámica: "¿Qué canción describe cómo llegaste hoy?"</div>
+                </div>
             </div>
-            <div class="timeline-item">
-                <div class="time">10:20</div>
-                <div class="title">Bloque teórico 1 — La música tiene cuerpo</div>
-                <div class="desc">¿Qué es el sonido? Ritmo, melodía y armonía explicados corporalmente. Escucha activa de 4 fragmentos.</div>
+
+            <div class="tl-item">
+                <div class="tl-time">10:20</div>
+                <div class="tl-body">
+                    <div class="tl-title">
+                        <svg class="tl-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/></svg>
+                        Bloque 1 — La música tiene cuerpo
+                    </div>
+                    <div class="tl-desc">¿Qué es el sonido? Ritmo, melodía y armonía explicados corporalmente. Escucha activa de 4 fragmentos.</div>
+                </div>
             </div>
-            <div class="timeline-item">
-                <div class="time">11:10</div>
-                <div class="title">Bloque teórico 2 — Los lenguajes de la música</div>
-                <div class="desc">Recorrido por géneros con audio y referencias visuales. Concepto: música como intención + emoción + estructura.</div>
+
+            <div class="tl-item">
+                <div class="tl-time">11:10</div>
+                <div class="tl-body">
+                    <div class="tl-title">
+                        <svg class="tl-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        Bloque 2 — Los lenguajes de la música
+                    </div>
+                    <div class="tl-desc">Recorrido por géneros con audio, referencias visuales y contexto histórico. Concepto: música como intención + emoción + estructura.</div>
+                </div>
             </div>
-            <div class="timeline-item">
-                <div class="time">12:00</div>
-                <div class="title">Práctica 1 — Primer contacto</div>
-                <div class="desc">Sala Skylight. Exploración libre guiada. Rotación por instrumentos. Cierre: "¿Cuál fue tu frecuencia?"</div>
+
+            <div class="tl-item">
+                <div class="tl-time">12:00</div>
+                <div class="tl-body">
+                    <div class="tl-title">
+                        <svg class="tl-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                        Práctica 1 — Primer contacto
+                    </div>
+                    <div class="tl-desc">Sala de ensayo. Exploración libre guiada. Rotación por instrumentos. Cierre: "¿Cuál fue tu frecuencia?"</div>
+                </div>
             </div>
-            <div class="timeline-item">
-                <div class="time">13:00</div>
-                <div class="title">Pausa Almuerzo & Torre de Pizza</div>
-                <div class="desc"><strong>Nosotros ponemos la pizza para todos.</strong> Solo pedimos traer botella de agua reutilizable y, opcionalmente, un snack saludable extra para compartir.</div>
+
+            <div class="tl-item">
+                <div class="tl-time">13:00</div>
+                <div class="tl-body">
+                    <div class="tl-title">
+                        <svg class="tl-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+                        Pausa — Torre de pizza 🍕
+                    </div>
+                    <div class="pizza-block">
+                        <div class="pizza-title">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            NOSOTROS PONEMOS LA PIZZA PARA TODOS
+                        </div>
+                        <p>Compartiremos una torre de pizza para toda la jornada. Solo pedimos traer <strong>botella de agua reutilizable</strong>. Si algún participante necesita algo específico o tiene alguna restricción alimentaria, puede traer su snack extra. <strong>Importante: informar alergias alimentarias al momento de inscribirse.</strong></p>
+                    </div>
+                </div>
             </div>
-            <div class="timeline-item">
-                <div class="time">14:00</div>
-                <div class="title">Reactivación — El cuerpo como instrumento</div>
-                <div class="desc">Sala de espejos. Percusión corporal colectiva por capas. Conexión cuerpo → emoción → sonido.</div>
+
+            <div class="tl-item">
+                <div class="tl-time">14:00</div>
+                <div class="tl-body">
+                    <div class="tl-title">
+                        <svg class="tl-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                        Reactivación — El cuerpo como instrumento
+                    </div>
+                    <div class="tl-desc">Sala de espejos. Percusión corporal colectiva por capas. Conexión cuerpo → emoción → sonido.</div>
+                </div>
             </div>
-            <div class="timeline-item">
-                <div class="time">14:30</div>
-                <div class="title">Práctica 2 — Creamos algo</div>
-                <div class="desc">Sala Skylight. Grupos de 3-4. Crear un patrón rítmico-melódico de 8 tiempos con 1-2 instrumentos.</div>
+
+            <div class="tl-item">
+                <div class="tl-time">14:30</div>
+                <div class="tl-body">
+                    <div class="tl-title">
+                        <svg class="tl-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        Práctica 2 — Creamos algo
+                    </div>
+                    <div class="tl-desc">Sala de ensayo. Grupos de 3-4. Crear un patrón rítmico-melódico de 8 tiempos con 1-2 instrumentos.</div>
+                </div>
             </div>
-            <div class="timeline-item">
-                <div class="time">15:30</div>
-                <div class="title">Transmisión — Muestra interna</div>
-                <div class="desc">Cada grupo presenta su creación. Escucha activa. "Hoy crearon algo que no existía esta mañana."</div>
+
+            <div class="tl-item">
+                <div class="tl-time">15:30</div>
+                <div class="tl-body">
+                    <div class="tl-title">
+                        <svg class="tl-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                        Transmisión — Muestra interna
+                    </div>
+                    <div class="tl-desc">Cada grupo presenta su creación. Escucha activa. <em>"Hoy crearon algo que no existía esta mañana."</em></div>
+                </div>
             </div>
-            <div class="timeline-item">
-                <div class="time">16:20</div>
-                <div class="title">Cierre — Kit del Explorador</div>
-                <div class="desc">Reflexión individual. Entrega del <strong>Fanzine "Frecuencias"</strong> (conceptos aprendidos), <strong>Sticker exclusivo</strong> y <strong>Certificado de Participación</strong>.</div>
+
+            <div class="tl-item">
+                <div class="tl-time">16:20</div>
+                <div class="tl-body">
+                    <div class="tl-title">
+                        <svg class="tl-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+                        Cierre — Kit del Explorador
+                    </div>
+                    <div class="tl-desc">Reflexión individual. Entrega del <strong>Fanzine "Frecuencias"</strong>, <strong>Sticker exclusivo</strong> y <strong>Certificado de Participación</strong>.</div>
+                </div>
             </div>
-            <div class="timeline-item">
-                <div class="time">17:00</div>
-                <div class="title">Fin de jornada</div>
-                <div class="desc">Llegada de padres y tutores. Facilitador disponible para comentarios.</div>
+
+            <div class="tl-item">
+                <div class="tl-time">17:00</div>
+                <div class="tl-body">
+                    <div class="tl-title">
+                        <svg class="tl-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+                        Fin de jornada
+                    </div>
+                    <div class="tl-desc">Llegada de padres y tutores. Facilitador disponible para comentarios.</div>
+                </div>
             </div>
+
         </div>
     </section>
 
+    <!-- 04 APRENDIZAJES -->
     <section id="aprendizajes">
-        <h2>04 Aprendizajes esperados</h2>
+        <div class="section-head">
+            <div class="section-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="1.8">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                </svg>
+            </div>
+            <div>
+                <div class="section-num">04</div>
+                <h2>Aprendizajes esperados</h2>
+            </div>
+        </div>
+
         <div class="card-grid">
-            <div class="card"><h3>Escucha activa</h3><p>Distinguir géneros, identificar ritmo/melodía/armonía y reconocer la intención emocional.</p></div>
-            <div class="card"><h3>Conciencia corporal</h3><p>Marcar pulso, identificar cómo la música afecta físicamente y participar en percusión colectiva.</p></div>
-            <div class="card"><h3>Contacto instrumental</h3><p>Familiarizarse con 4 instrumentos reales, producir sonido intencional e identificar afinidad.</p></div>
-            <div class="card"><h3>Creación colectiva</h3><p>Trabajar hacia un resultado sonoro grupal, tomar decisiones creativas y presentar una creación propia.</p></div>
+            <div class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2">
+                        <path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
+                    </svg>
+                </div>
+                <h3>Escucha activa</h3>
+                <p>Distinguir géneros, identificar ritmo/melodía/armonía y reconocer la intención emocional de cada pieza.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                    </svg>
+                </div>
+                <h3>Conciencia corporal</h3>
+                <p>Marcar pulso, identificar cómo la música afecta físicamente y participar en percusión colectiva.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2">
+                        <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
+                    </svg>
+                </div>
+                <h3>Contacto instrumental</h3>
+                <p>Familiarizarse con 4 instrumentos reales, producir sonido intencional e identificar afinidad personal.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                </div>
+                <h3>Creación colectiva</h3>
+                <p>Trabajar hacia un resultado sonoro grupal, tomar decisiones creativas y presentar una obra propia.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2">
+                        <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                    </svg>
+                </div>
+                <h3>Vocabulario musical</h3>
+                <p>Incorporar términos básicos — pulso, tempo, dinámica, timbre — en un contexto práctico y sin tecnicismos.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2">
+                        <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
+                    </svg>
+                </div>
+                <h3>Autoconocimiento creativo</h3>
+                <p>Reconocer preferencias propias, desarrollar tolerancia al error y ejercitar la capacidad de decisión artística.</p>
+            </div>
         </div>
     </section>
 
+    <!-- 05 PADRES -->
     <section id="padres">
-        <h2>05 Información para padres y tutores</h2>
+        <div class="section-head">
+            <div class="section-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="1.8">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+            </div>
+            <div>
+                <div class="section-num">05</div>
+                <h2>Información para padres y tutores</h2>
+            </div>
+        </div>
+
         <div class="card-grid">
-            <div class="card"><h3>Puntualidad</h3><p>El taller inicia a las 10:00 hrs. Llegar 10 minutos antes para el registro.</p></div>
-            <div class="card"><h3>Ropa cómoda</h3><p>Habrá movimiento corporal. Ropa y calzado sin restricciones.</p></div>
-            <div class="card"><h3>Almuerzo</h3><p><strong>Nosotros compramos la pizza.</strong> Solo pedimos agua reutilizable y snack opcional para compartir.</p></div>
-            <div class="card"><h3>Sin experiencia</h3><p>No se requiere conocimiento musical. El taller parte desde cero.</p></div>
-            <div class="card"><h3>El lugar</h3><p>Nysa Arts Studio es un espacio profesional. Acceso a instrumentos reales en entorno acústico controlado.</p></div>
-            <div class="card"><h3>Retiro</h3><p>La jornada finaliza a las 17:00 hrs. Padres pueden llegar desde las 16:30 para el cierre.</p></div>
-            <div class="card"><h3>Salud & Seguridad</h3><p>Por favor, informar alergias alimentarias o condiciones médicas al momento de la inscripción.</p></div>
-            <div class="card"><h3>Celulares</h3><p>Modo silencio durante los bloques de actividad para mantener la inmersión.</p></div>
+            <div class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <h3>Puntualidad</h3>
+                <p>El taller inicia a las 10:00 hrs. Llegar 10 minutos antes para el registro.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/></svg>
+                </div>
+                <h3>Ropa cómoda</h3>
+                <p>Habrá movimiento corporal. Ropa y calzado sin restricciones de movimiento.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+                </div>
+                <h3>Alimentación</h3>
+                <p><strong>Nosotros ponemos la pizza.</strong> Compartiremos una torre de pizza para todos. Solo pedimos agua reutilizable. Si necesitan algo específico, pueden traer un snack extra.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <h3>Salud & alergias</h3>
+                <p>Informar <strong>alergias alimentarias o condiciones médicas</strong> al momento de la inscripción. Es importante para planificar bien la torre de pizza.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </div>
+                <h3>Sin experiencia previa</h3>
+                <p>No se requiere conocimiento musical. El taller parte desde cero absoluto.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                </div>
+                <h3>El espacio</h3>
+                <p><a href="https://www.instagram.com/nysa_arts/?hl=es-la" target="_blank" rel="noopener noreferrer">Nysa Arts</a> Studio es un espacio profesional con instrumentos reales en entorno acústico controlado.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+                </div>
+                <h3>Retiro</h3>
+                <p>Jornada finaliza a las 17:00 hrs. Padres pueden llegar desde las 16:30 para el cierre.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                </div>
+                <h3>Celulares</h3>
+                <p>Modo silencio durante los bloques de actividad para mantener la inmersión total en la experiencia.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                </div>
+                <h3>Registro fotográfico</h3>
+                <p>Durante el taller se tomará registro de la experiencia. Si tienes objeción al uso de imágenes de tu hijo/a, indícalo al momento de inscribirte.</p>
+            </div>
         </div>
     </section>
 
+   <section id="facilitador">
+        <div class="section-head">
+            <div class="section-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="1.8">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                </svg>
+            </div>
+            <div>
+                <div class="section-num">06</div>
+
+                
+               <!-- 06 FACILITADOR --> 
+                <h2>Tu facilitador</h2>
+            </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns: 1fr 2fr; gap: 1px; background: var(--gris); border: 1px solid var(--gris);">
+            <div style="background:var(--negro); padding:36px 30px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:16px;">
+                <div style="width:120px; height:120px; border:2px solid var(--verde-border); border-radius:8px; background:var(--verde-dim); display:flex; align-items:center; justify-content:center; box-shadow:var(--glow); overflow:hidden;">
+                    <img src="https://i0.wp.com/lostastronauta.org/wp-content/uploads/2024/09/astromykos-ID.png?w=1600&ssl=1" 
+                         alt="AstroMykos ID" 
+                         style="width:100%; height:100%; object-fit:cover;">
+                </div>
+                <div>
+                    <div style="font-family:var(--mono); color:var(--verde); font-size:1rem; letter-spacing:2px; margin-bottom:4px;">ASTROMYKOS</div>
+                    <div style="font-size:.8rem; opacity:.5; font-family:var(--mono);">Lost Astronauta SpA</div>
+                </div>
+                <a href="https://lostastronauta.org/about/" target="_blank" style="display:inline-flex; align-items:center; gap:8px; font-family:var(--mono); font-size:.75rem; color:var(--verde); text-decoration:none; border:1px solid var(--verde-border); padding:8px 16px; transition:all .2s; letter-spacing:1px;"
+                    onmouseover="this.style.background='rgba(6,255,35,0.08)'" onmouseout="this.style.background='transparent'">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    Ver perfil completo
+                </a>
+            </div>
+            <div style="background:var(--negro); padding:36px 36px;">
+                <p style="font-size:1.05rem; margin-bottom:18px; opacity:.9; line-height:1.8;">
+                    El taller es impartido por <strong style="color:var(--verde);">AstroMykos</strong>, director creativo y fundador de <strong>Lost Astronauta SpA</strong>, ecosistema de diseño estratégico, educación y producción cultural con más de <strong>25 años de trayectoria</strong> en Chile.
+                </p>
+                <p style="margin-bottom:18px;">
+                    Con formación en diseño, comunicación y metodologías activas, AstroMykos ha desarrollado programas educativos validados por el <strong>Ministerio de Educación de Chile</strong> y ha facilitado experiences de aprendizaje creativo para niños, jóvenes y adultos en la Región Metropolitana.
+                </p>
+                <p style="margin-bottom:0;">
+                    Su metodología combina el rigor técnico con la filosofía del <em>Rock Protónico</em>: la creatividad como partícula fundamental, el error como combustible y el territorio propio como punto de partida. Cada taller es un espacio protegido donde no existe la respuesta incorrecta.
+                </p>
+                <div style="display:flex; gap:24px; margin-top:24px; flex-wrap:wrap;">
+                    <div style="display:flex; align-items:center; gap:8px;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                        <span style="font-family:var(--mono); font-size:.75rem; opacity:.6;">+25 años de trayectoria</span>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:8px;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        <span style="font-family:var(--mono); font-size:.75rem; opacity:.6;">Validado Mineduc</span>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:8px;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        <span style="font-family:var(--mono); font-size:.75rem; opacity:.6;">Santiago, Chile</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 07 INSCRIPCIÓN -->
     <section id="inscripcion">
         <div class="cta-box">
-            <h2>06 Inscripción</h2>
-            <p style="opacity: 0.7; margin-bottom: 20px;">Vacaciones de invierno 2026 · Nysa Arts Studio · Santiago de Chile</p>
-            <div class="price">$30.000 <span>por persona</span></div>
-            <a href="https://wa.me/56975693952?text=Hola%2C%20quiero%20inscribirme%20en%20el%20Taller%20Frecuencias%20de%20Lost%20Astronauta" class="btn">Inscribirse por WhatsApp</a>
-            <a href="mailto:lost.astronauta@gail.com?subject=Inscripcion%20Taller%20Frecuencias" class="btn btn-outline">Escribir por email</a>
-            <p class="note">Máximo 12 cupos · Confirmación con 50% de anticipo · Fecha julio por confirmar</p>
+            <div class="section-head" style="justify-content:center; margin-bottom:24px;">
+                <div class="section-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="1.8">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <div>
+                    <div class="section-num">07</div>
+                    <h2>Inscripción</h2>
+                </div>
+            </div>
+
+            <p style="opacity:.55; margin-bottom:28px; font-family:var(--mono); font-size:.8rem; letter-spacing:1.5px;">
+                VACACIONES DE INVIERNO 2026 · NYSA ARTS STUDIO · SANTIAGO DE CHILE
+            </p>
+
+            <div class="inversion-label">TU INVERSIÓN</div>
+            <div class="inversion-amount">$30.000</div>
+            <div class="inversion-sub">por persona · incluye pizza + kit del explorador</div>
+
+            <div class="btn-group">
+                <a href="https://wa.me/56975693952?text=Hola%2C%20quiero%20inscribirme%20en%20el%20Taller%20Frecuencias%20de%20Lost%20Astronauta" class="btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    Inscribirse por WhatsApp
+                </a>
+                <a href="mailto:lost.astronauta@gmail.com?subject=Inscripcion%20Taller%20Frecuencias" class="btn btn-outline">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    Escribir por email
+                </a>
+            </div>
+
+            <p class="cta-note">MÁXIMO 12 CUPOS · CONFIRMACIÓN CON 50% ANTICIPO · FECHA JULIO POR CONFIRMAR</p>
         </div>
     </section>
+
 </main>
 
 <footer>
-    <div class="container">
-        <p style="margin-bottom: 15px; font-family: var(--font-mono); letter-spacing: 2px;">LOST ASTRONAUTA · Academia de la Vida</p>
-        <div>
-            <a href="https://lostastronauta.org" target="_blank">lostastronauta.org</a> · 
-            <a href="https://lostastronauta.org/academiadelavida" target="_blank">academiadelavida</a> · 
-            <a href="https://instagram.com/lostastronauta" target="_blank">@lostastronauta</a>
-        </div>
+    <div class="footer-brand">LOST ASTRONAUTA · ACADEMIA DE LA VIDA</div>
+    <div>
+        <a href="https://lostastronauta.org" target="_blank">lostastronauta.org</a>
+        <a href="https://lostastronauta.org/academiadelavida" target="_blank">academiadelavida</a>
+        <a href="https://instagram.com/lostastronauta" target="_blank">@lostastronauta</a>
     </div>
 </footer>
+
+<script>
+    const slides = document.querySelectorAll('.slide');
+    const dotsContainer = document.getElementById('dots');
+    let current = 0;
+    let timer;
+
+    // Generar dots
+    slides.forEach((_, i) => {
+        const d = document.createElement('button');
+        d.className = 'dot' + (i === 0 ? ' active' : '');
+        d.setAttribute('aria-label', `Slide ${i+1}`);
+        d.addEventListener('click', () => goTo(i));
+        dotsContainer.appendChild(d);
+    });
+
+    function goTo(n) {
+        slides[current].classList.remove('active');
+        dotsContainer.children[current].classList.remove('active');
+        current = (n + slides.length) % slides.length;
+        slides[current].classList.add('active');
+        dotsContainer.children[current].classList.add('active');
+        resetTimer();
+    }
+
+    function resetTimer() {
+        clearInterval(timer);
+        timer = setInterval(() => goTo(current + 1), 4500);
+    }
+
+    document.getElementById('prev').addEventListener('click', () => goTo(current - 1));
+    document.getElementById('next').addEventListener('click', () => goTo(current + 1));
+
+    resetTimer();
+</script>
 
 </body>
 </html>
