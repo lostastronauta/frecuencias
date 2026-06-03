@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -101,7 +100,7 @@
             letter-spacing: 2.5px; color: var(--verde);
             border: 1px solid var(--verde-border);
             padding: 6px 20px; margin-bottom: 30px;
-            border-radius: 20px; /* Slight pill shape */
+            border-radius: 20px;
             background: rgba(6,255,35,0.02);
             backdrop-filter: blur(4px);
         }
@@ -130,8 +129,8 @@
         .carousel-wrap {
             max-width: 1100px; margin: 0 auto;
             position: relative;
-            border-radius: 8px; /* Slightly rounded for premium feel */
-            padding: 4px; /* Inner border effect */
+            border-radius: 8px;
+            padding: 4px;
             background: linear-gradient(180deg, rgba(6,255,35,0.1) 0%, rgba(26,26,26,0) 100%);
         }
 
@@ -149,7 +148,7 @@
             position: absolute; inset: 0;
             display: flex; align-items: center; justify-content: center;
             opacity: 0;
-            transform: scale(1.05); /* Subtle zoom effect */
+            transform: scale(1.05);
             transition: opacity .8s ease, transform .8s ease;
             background: var(--gris);
         }
@@ -157,6 +156,11 @@
         .slide.active { 
             opacity: 1; z-index: 1; 
             transform: scale(1);
+        }
+
+        .slide img {
+            width: 100%; height: 100%;
+            object-fit: cover; display: block;
         }
 
         .slide-placeholder {
@@ -179,11 +183,6 @@
         .slide-placeholder .slide-num {
             font-family: var(--mono); font-size: .65rem;
             color: var(--blanco); opacity: .3;
-        }
-
-        .slide img {
-            width: 100%; height: 100%;
-            object-fit: cover; display: block;
         }
 
         /* Controles */
@@ -215,7 +214,7 @@
         }
 
         .dot {
-            width: 12px; height: 4px; /* Pill shaped dots */
+            width: 12px; height: 4px;
             border-radius: 2px;
             background: rgba(255,255,255,0.15);
             border: none;
@@ -305,7 +304,7 @@
             border: 1px solid rgba(255,255,255,0.05);
             border-radius: 4px;
             margin-top: 40px;
-            overflow: hidden; /* For border radius */
+            overflow: hidden;
         }
 
         .card {
@@ -710,58 +709,28 @@
     <h1>Taller <span>Frecuencias</span></h1>
     <p class="hero-sub">Exploración musical intensiva · Jornada completa · Nysa Arts Studio</p>
 
-    <!-- CARRUSEL -->
+    <!-- CARRUSEL CON IMÁGENES REALES -->
     <div class="carousel-wrap">
         <div class="carousel" id="carousel">
 
+            <!-- Slide 1 -->
             <div class="slide active">
-                <div class="slide-placeholder">
-                    <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="1">
-                        <circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>
-                    </svg>
-                    <span class="slide-label">Imagen 01 — Portada del taller</span>
-                    <span class="slide-num">[ Reemplaza con tu fotografía ]</span>
-                </div>
+                <img src="1.png" alt="Niños explorando instrumentos en estudio profesional">
             </div>
 
+            <!-- Slide 2 -->
             <div class="slide">
-                <div class="slide-placeholder">
-                    <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="1">
-                        <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
-                    </svg>
-                    <span class="slide-label">Imagen 02 — Exploración instrumental</span>
-                    <span class="slide-num">[ Reemplaza con tu fotografía ]</span>
-                </div>
+                <img src="2.png" alt="Exploración instrumental y creación musical">
             </div>
 
+            <!-- Slide 3 -->
             <div class="slide">
-                <div class="slide-placeholder">
-                    <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="1">
-                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                    </svg>
-                    <span class="slide-label">Imagen 03 — Trabajo en equipo</span>
-                    <span class="slide-num">[ Reemplaza con tu fotografía ]</span>
-                </div>
+                <img src="3.png" alt="Trabajo en equipo y colaboración musical">
             </div>
 
+            <!-- Slide 4 -->
             <div class="slide">
-                <div class="slide-placeholder">
-                    <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="1">
-                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-                    </svg>
-                    <span class="slide-label">Imagen 04 — Muestra final</span>
-                    <span class="slide-num">[ Reemplaza con tu fotografía ]</span>
-                </div>
-            </div>
-
-            <div class="slide">
-                <div class="slide-placeholder">
-                    <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="1">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
-                    </svg>
-                    <span class="slide-label">Imagen 05 — Kit del Explorador</span>
-                    <span class="slide-num">[ Reemplaza con tu fotografía ]</span>
-                </div>
+                <img src="4.png" alt="Muestra final y presentación">
             </div>
 
             <button class="carousel-btn prev" id="prev" aria-label="Anterior">
@@ -1197,52 +1166,8 @@
         </div>
     </section>
 
-
-
-  <!-- Ubicación -->
-    <section id="ubicacion" style="padding: 60px 0; border-top: 1px solid var(--gris-nave);">
-        <div class="container">
-            <h2 style="justify-content: center; margin-bottom: 30px;">📍 Ubicación del taller</h2>
-            <p style="text-align: center; opacity: 0.85; margin-bottom: 25px; max-width: 600px; margin-left: auto; margin-right: auto;">
-                <strong>Nysa Arts Studio</strong><br>
-                Erasmo Escala 2170, Santiago Centro<br>
-                <span style="color: var(--verde-protonico); font-family: var(--font-mono);">Metro Los Héroes y República (Línea 1)</span>
-            </p>
-            
-            <div style="background: var(--gris-nave); border: 2px solid var(--verde-protonico-border); border-radius: 8px; padding: 10px; box-shadow: var(--glow-verde); overflow: hidden;">
-                <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 4px;">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2227.1464239699794!2d-70.66509231815391!3d-33.44603853338525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c5abaf504b6f%3A0x7d9ea299a694e5f4!2sNysa%20Arts%20-%20Espacio%20Artistico!5e0!3m2!1ses!2scl!4v1780519256515!5m2!1ses!2scl" 
-                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; border-radius: 4px;" 
-                        allowfullscreen="" 
-                        loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade"
-                        title="Ubicación de Nysa Arts Studio">
-                    </iframe>
-                </div>
-            </div>
-            
-            <div style="text-align: center; margin-top: 25px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                <a href="https://maps.google.com/?q=Nysa+Arts+Erasmo+Escala+2170+Santiago" target="_blank" class="btn btn-outline" style="padding: 12px 24px; font-size: 0.9rem;">🗺️ Abrir en Google Maps</a>
-            </div>
-            
-            <div style="background: var(--verde-protonico-dim); border-left: 3px solid var(--verde-protonico); padding: 20px; margin-top: 30px; border-radius: 0 6px 6px 0;">
-                <p style="margin: 0 0 15px 0; font-family: var(--font-mono); font-size: 0.9rem;">
-                    <strong style="color: var(--verde-protonico);">💡 Tips de llegada:</strong>
-                </p>
-                <ul style="margin: 0; padding-left: 20px; color: var(--blanco-cosmico); opacity: 0.9; line-height: 1.8;">
-                    <li><strong>Metro:</strong> Línea 1, Estación República (5 min caminando) o Estación Los Héroes (Línea 1 y 2, 10 min caminando)</li>
-                    <li><strong>Buses:</strong> Múltiples líneas por Av. Alameda Bernardo O'Higgins y calles aledañas</li>
-                    <li><strong>Estacionamiento:</strong> Zonas azules disponibles en Erasmo Escala y calles aledañas</li>
-                    <li><strong>Llegada:</strong> Recomendamos llegar 10 min antes para estacionar y registrar ingreso</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    
-
-   <section id="facilitador" class="reveal">
+    <!-- 06 FACILITADOR -->
+    <section id="facilitador" class="reveal">
         <div class="section-head">
             <div class="section-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="1.8">
