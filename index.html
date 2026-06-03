@@ -15,8 +15,9 @@
             --gris-mid: #2a2a2a;
             --verde-dim: rgba(6,255,35,0.08);
             --verde-border: rgba(6,255,35,0.25);
-            --glow: 0 0 24px rgba(6,255,35,0.35);
-            --glow-sm: 0 0 10px rgba(6,255,35,0.25);
+            --glow: 0 10px 40px rgba(6,255,35,0.15);
+            --glow-sm: 0 4px 15px rgba(6,255,35,0.1);
+            --glow-hover: 0 15px 50px rgba(6,255,35,0.25);
             --mono: 'Space Mono', monospace;
             --sans: 'DM Sans', sans-serif;
         }
@@ -48,17 +49,19 @@
         /* ─── NAV ─── */
         nav {
             position: sticky; top: 0; z-index: 200;
-            background: rgba(6,6,6,0.92);
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--gris);
+            background: rgba(6,6,6,0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
             padding: 0 24px;
+            transition: all 0.3s ease;
         }
 
         .nav-inner {
             max-width: 1100px; margin: 0 auto;
             display: flex; align-items: center;
             justify-content: space-between;
-            height: 60px; gap: 16px; flex-wrap: wrap;
+            height: 70px; gap: 16px; flex-wrap: wrap;
         }
 
         .brand {
@@ -74,16 +77,20 @@
             color: var(--blanco); opacity: .65;
             text-decoration: none;
             font-family: var(--mono); font-size: .75rem;
-            letter-spacing: 1.5px; padding: 6px 12px;
-            border-radius: 2px;
-            transition: all .25s;
+            letter-spacing: 1.5px; padding: 8px 16px;
+            border-radius: 4px;
+            transition: all .3s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .nav-links a:hover { opacity: 1; color: var(--verde); background: var(--verde-dim); }
+        .nav-links a:hover { 
+            opacity: 1; 
+            color: var(--verde); 
+            background: rgba(6,255,35,0.05); 
+        }
 
         /* ─── HERO ─── */
         .hero {
             position: relative; overflow: hidden;
-            padding: 70px 24px 0;
+            padding: 100px 24px 0;
             text-align: center;
         }
 
@@ -92,71 +99,87 @@
             font-family: var(--mono); font-size: .8rem;
             letter-spacing: 2.5px; color: var(--verde);
             border: 1px solid var(--verde-border);
-            padding: 5px 18px; margin-bottom: 22px;
+            padding: 6px 20px; margin-bottom: 30px;
+            border-radius: 20px;
+            background: rgba(6,255,35,0.02);
+            backdrop-filter: blur(4px);
         }
 
         h1 {
             font-family: var(--mono);
-            font-size: clamp(2.4rem, 7vw, 5rem);
-            letter-spacing: 6px; line-height: 1.1;
+            font-size: clamp(2.8rem, 7vw, 5.5rem);
+            letter-spacing: 6px; line-height: 1.05;
             text-transform: uppercase;
-            margin-bottom: 18px;
+            margin-bottom: 24px;
+            font-weight: 700;
         }
 
-        h1 span { color: var(--verde); text-shadow: var(--glow); }
+        h1 span { 
+            color: var(--verde); 
+            text-shadow: var(--glow); 
+        }
 
         .hero-sub {
-            opacity: .65; font-size: 1.05rem;
-            max-width: 540px; margin: 0 auto 50px;
+            opacity: .7; font-size: 1.15rem;
+            max-width: 600px; margin: 0 auto 60px;
+            font-weight: 300;
         }
 
         /* ─── CARRUSEL ─── */
         .carousel-wrap {
             max-width: 1100px; margin: 0 auto;
             position: relative;
+            border-radius: 8px;
+            padding: 4px;
+            background: linear-gradient(180deg, rgba(6,255,35,0.1) 0%, rgba(26,26,26,0) 100%);
         }
 
         .carousel {
             position: relative;
             width: 100%; aspect-ratio: 16/7;
             overflow: hidden;
-            border: 1px solid var(--verde-border);
+            border-radius: 6px;
+            border: 1px solid rgba(6,255,35,0.15);
             box-shadow: var(--glow);
+            background: var(--gris);
         }
 
         .slide {
             position: absolute; inset: 0;
             display: flex; align-items: center; justify-content: center;
             opacity: 0;
-            transition: opacity .7s ease;
+            transform: scale(1.05);
+            transition: opacity .8s ease, transform .8s ease;
             background: var(--gris);
         }
 
-        .slide.active { opacity: 1; z-index: 1; }
+        .slide.active { 
+            opacity: 1; z-index: 1; 
+            transform: scale(1);
+        }
 
-        /* Placeholders visuales hasta tener fotos reales */
         .slide-placeholder {
             width: 100%; height: 100%;
             display: flex; flex-direction: column;
             align-items: center; justify-content: center;
             gap: 16px;
-            background: linear-gradient(135deg, #0d0d0d 0%, #111 50%, #0a0a0a 100%);
+            background: linear-gradient(135deg, #111 0%, #1a1a1a 50%, #0a0a0a 100%);
         }
 
-        .slide-placeholder svg { opacity: .18; }
+        .slide-placeholder svg { opacity: .3; transition: transform 3s ease-out; }
+        .slide.active .slide-placeholder svg { transform: scale(1.1); }
 
         .slide-placeholder .slide-label {
             font-family: var(--mono); font-size: .75rem;
             letter-spacing: 3px; color: var(--verde);
-            opacity: .5; text-transform: uppercase;
+            opacity: .7; text-transform: uppercase;
         }
 
         .slide-placeholder .slide-num {
             font-family: var(--mono); font-size: .65rem;
-            color: var(--blanco); opacity: .2;
+            color: var(--blanco); opacity: .3;
         }
 
-        /* Zona de imagen real — cuando pongas tus fotos reemplaza .slide-placeholder con <img> */
         .slide img {
             width: 100%; height: 100%;
             object-fit: cover; display: block;
@@ -166,310 +189,396 @@
         .carousel-btn {
             position: absolute; top: 50%; transform: translateY(-50%);
             z-index: 10;
-            background: rgba(6,6,6,.75);
-            border: 1px solid var(--verde-border);
-            color: var(--verde);
-            width: 46px; height: 46px;
+            background: rgba(6,6,6,.4);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--blanco);
+            width: 48px; height: 48px;
+            border-radius: 50%;
             cursor: pointer;
             display: flex; align-items: center; justify-content: center;
-            transition: all .2s;
-            backdrop-filter: blur(6px);
+            transition: all .3s cubic-bezier(0.16, 1, 0.3, 1);
+            backdrop-filter: blur(8px);
         }
-        .carousel-btn:hover { background: var(--verde-dim); box-shadow: var(--glow-sm); }
-        .carousel-btn.prev { left: 14px; }
-        .carousel-btn.next { right: 14px; }
+        .carousel-btn:hover { 
+            background: rgba(6,255,35,.15); 
+            border-color: var(--verde-border);
+            color: var(--verde);
+            transform: translateY(-50%) scale(1.05); 
+        }
+        .carousel-btn.prev { left: 24px; }
+        .carousel-btn.next { right: 24px; }
 
         .carousel-dots {
             display: flex; justify-content: center;
-            gap: 8px; padding: 16px 0 0;
+            gap: 12px; padding: 24px 0 0;
         }
 
         .dot {
-            width: 8px; height: 8px;
-            border-radius: 50%;
-            background: var(--gris-mid);
-            border: 1px solid var(--verde-border);
-            cursor: pointer; transition: all .25s;
+            width: 12px; height: 4px;
+            border-radius: 2px;
+            background: rgba(255,255,255,0.15);
+            border: none;
+            cursor: pointer; transition: all .3s ease;
         }
-        .dot.active { background: var(--verde); box-shadow: var(--glow-sm); }
+        .dot.active { 
+            background: var(--verde); 
+            width: 24px;
+            box-shadow: var(--glow-sm); 
+        }
 
         /* ─── STATS GRID ─── */
         .stats {
-            max-width: 1100px; margin: 50px auto 0;
+            max-width: 1100px; margin: 80px auto 0;
             display: grid;
             grid-template-columns: repeat(6,1fr);
-            gap: 1px; background: var(--gris);
-            border: 1px solid var(--gris);
+            gap: 1px; background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 4px;
+            overflow: hidden;
         }
 
         .stat {
             background: var(--negro);
-            padding: 22px 12px;
+            padding: 30px 16px;
             text-align: center;
-            transition: background .2s;
+            transition: background .3s, transform .3s;
+            position: relative;
         }
-        .stat:hover { background: var(--gris); }
+        .stat:hover { 
+            background: rgba(26,26,26, 0.8); 
+        }
 
         .stat strong {
             display: block;
-            font-family: var(--mono); font-size: 1.3rem;
-            color: var(--verde); margin-bottom: 5px;
+            font-family: var(--mono); font-size: 1.4rem;
+            color: var(--verde); margin-bottom: 8px;
+            font-weight: 700;
         }
-        .stat span { font-size: .8rem; opacity: .6; }
+        .stat span { font-size: .85rem; opacity: .7; font-weight: 300;}
 
         /* ─── LAYOUT GENERAL ─── */
         .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
-        section { padding: 70px 0; border-bottom: 1px solid var(--gris); }
+        section { 
+            padding: 120px 0; 
+            border-bottom: 1px solid rgba(255,255,255,0.05); 
+        }
 
         .section-head {
-            display: flex; align-items: center; gap: 14px;
-            margin-bottom: 32px;
+            display: flex; align-items: center; gap: 18px;
+            margin-bottom: 48px;
         }
 
         .section-icon {
-            width: 42px; height: 42px; flex-shrink: 0;
-            background: var(--verde-dim);
-            border: 1px solid var(--verde-border);
-            border-radius: 4px;
+            width: 48px; height: 48px; flex-shrink: 0;
+            background: rgba(6,255,35,0.05);
+            border: 1px solid rgba(6,255,35,0.15);
+            border-radius: 8px;
             display: flex; align-items: center; justify-content: center;
         }
 
-        .section-icon svg { width: 22px; height: 22px; }
+        .section-icon svg { width: 24px; height: 24px; }
 
         h2 {
             font-family: var(--mono);
-            font-size: 1.35rem; letter-spacing: 2px;
+            font-size: 1.8rem; letter-spacing: 2px;
             color: var(--verde);
+            font-weight: 400;
         }
 
         .section-num {
-            font-family: var(--mono); font-size: .75rem;
-            color: var(--verde); opacity: .4;
+            font-family: var(--mono); font-size: .8rem;
+            color: var(--verde); opacity: .5;
+            margin-bottom: 4px;
         }
 
-        p { margin-bottom: 16px; opacity: .82; font-size: .98rem; }
+        p { margin-bottom: 20px; opacity: .85; font-size: 1.05rem; font-weight: 300; }
         p:last-child { margin-bottom: 0; }
-        strong { color: var(--blanco); opacity: 1; }
+        strong { color: var(--blanco); opacity: 1; font-weight: 500;}
 
         /* ─── CARDS ─── */
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1px; background: var(--gris);
-            border: 1px solid var(--gris);
-            margin-top: 28px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1px; background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 4px;
+            margin-top: 40px;
+            overflow: hidden;
         }
 
         .card {
             background: var(--negro);
-            padding: 28px 26px;
-            transition: background .2s;
+            padding: 40px 32px;
+            transition: all .4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            z-index: 1;
         }
-        .card:hover { background: var(--gris); }
+        .card:hover { 
+            background: var(--gris); 
+            transform: translateY(-4px) scale(1.01);
+            z-index: 2;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
 
         .card-icon {
-            width: 36px; height: 36px;
-            background: var(--verde-dim);
-            border: 1px solid var(--verde-border);
-            border-radius: 3px;
+            width: 42px; height: 42px;
+            background: rgba(6,255,35,0.05);
+            border: 1px solid rgba(6,255,35,0.2);
+            border-radius: 6px;
             display: flex; align-items: center; justify-content: center;
-            margin-bottom: 14px;
+            margin-bottom: 20px;
+            transition: all .3s ease;
         }
-        .card-icon svg { width: 18px; height: 18px; }
+        .card:hover .card-icon {
+            background: rgba(6,255,35,0.1);
+            box-shadow: var(--glow-sm);
+        }
+        .card-icon svg { width: 20px; height: 20px; }
 
         .card h3 {
-            font-family: var(--mono); font-size: .9rem;
-            letter-spacing: 1px; color: var(--verde);
-            margin-bottom: 10px;
+            font-family: var(--mono); font-size: 1rem;
+            letter-spacing: 1.5px; color: var(--verde);
+            margin-bottom: 12px;
         }
 
-        .card p { font-size: .9rem; margin: 0; }
+        .card p { font-size: .95rem; margin: 0; opacity: 0.8; line-height: 1.6;}
 
         /* ─── HIGHLIGHT BOX ─── */
         .highlight-box {
-            background: var(--verde-dim);
-            border-left: 3px solid var(--verde);
-            padding: 26px 28px; margin: 28px 0;
+            background: linear-gradient(90deg, rgba(6,255,35,0.08) 0%, rgba(6,255,35,0.02) 100%);
+            border-left: 4px solid var(--verde);
+            padding: 32px 40px; margin: 40px 0;
+            border-radius: 0 8px 8px 0;
         }
 
         .pillar {
-            display: flex; gap: 14px; align-items: flex-start;
-            padding: 12px 0;
+            display: flex; gap: 16px; align-items: flex-start;
+            padding: 16px 0;
             border-bottom: 1px solid rgba(6,255,35,.08);
         }
         .pillar:last-child { border-bottom: none; padding-bottom: 0; }
 
         .pillar-icon {
-            width: 32px; height: 32px; flex-shrink: 0;
-            background: rgba(6,255,35,.12);
-            border-radius: 3px;
+            width: 36px; height: 36px; flex-shrink: 0;
+            background: rgba(6,255,35,.1);
+            border-radius: 6px;
             display: flex; align-items: center; justify-content: center;
         }
-        .pillar-icon svg { width: 16px; height: 16px; }
+        .pillar-icon svg { width: 18px; height: 18px; }
 
-        .pillar p { margin: 0; font-size: .9rem; }
+        .pillar p { margin: 0; font-size: .95rem; }
         .pillar strong { color: var(--verde); }
 
         /* ─── TIMELINE ─── */
         .timeline {
-            border-left: 2px solid var(--verde-border);
-            padding-left: 32px; margin-top: 28px;
+            border-left: 1px solid rgba(6,255,35,0.3);
+            padding-left: 40px; margin-top: 40px;
         }
 
         .tl-item {
-            position: relative; margin-bottom: 32px;
-            display: grid; grid-template-columns: 90px 1fr;
-            gap: 16px; align-items: start;
+            position: relative; margin-bottom: 48px;
+            display: grid; grid-template-columns: 100px 1fr;
+            gap: 24px; align-items: start;
         }
+        .tl-item:last-child { margin-bottom: 0; }
 
         .tl-item::before {
             content: '';
-            position: absolute; left: -38px; top: 6px;
+            position: absolute; left: -46px; top: 8px;
             width: 12px; height: 12px;
             background: var(--verde); border-radius: 50%;
+            box-shadow: var(--glow-sm);
+            transition: all 0.3s ease;
+        }
+        .tl-item:hover::before {
+            transform: scale(1.3);
             box-shadow: var(--glow);
         }
 
         .tl-time {
-            font-family: var(--mono); font-size: .85rem;
+            font-family: var(--mono); font-size: .95rem;
             color: var(--verde); padding-top: 2px;
         }
 
-        .tl-body {}
-
         .tl-title {
-            font-weight: 600; font-size: 1rem;
-            margin-bottom: 5px; color: var(--blanco);
-            display: flex; align-items: center; gap: 8px;
+            font-weight: 500; font-size: 1.1rem;
+            margin-bottom: 8px; color: var(--blanco);
+            display: flex; align-items: center; gap: 10px;
         }
 
-        .tl-icon { opacity: .75; }
+        .tl-icon { opacity: .8; }
 
-        .tl-desc { font-size: .88rem; opacity: .65; line-height: 1.65; }
+        .tl-desc { font-size: .95rem; opacity: .7; line-height: 1.7; font-weight: 300;}
 
         /* Pizza highlight */
         .pizza-block {
-            background: rgba(6,255,35,.06);
-            border: 1px solid var(--verde-border);
-            padding: 16px 20px; margin-top: 8px;
-            border-radius: 2px;
+            background: rgba(6,255,35,.04);
+            border: 1px solid rgba(6,255,35,.15);
+            padding: 24px 28px; margin-top: 16px;
+            border-radius: 6px;
         }
-        .pizza-block p { margin: 0; font-size: .88rem; }
+        .pizza-block p { margin: 0; font-size: .9rem; }
         .pizza-block .pizza-title {
-            font-family: var(--mono); font-size: .8rem;
-            color: var(--verde); letter-spacing: 1px;
-            margin-bottom: 8px; display: flex; align-items: center; gap: 8px;
+            font-family: var(--mono); font-size: .85rem;
+            color: var(--verde); letter-spacing: 1.5px;
+            margin-bottom: 12px; display: flex; align-items: center; gap: 10px;
+            text-transform: uppercase;
         }
 
         /* ─── CTA / INVERSIÓN ─── */
         .cta-box {
-            background: var(--gris);
-            border: 2px solid var(--verde);
-            padding: 56px 40px;
+            background: linear-gradient(135deg, rgba(26,26,26,1) 0%, rgba(10,10,10,1) 100%);
+            border: 1px solid rgba(6,255,35,0.4);
+            padding: 80px 40px;
             text-align: center;
-            margin: 56px 0;
+            margin: 80px 0;
+            border-radius: 12px;
             box-shadow: var(--glow);
             position: relative; overflow: hidden;
         }
 
         .cta-box::before {
             content: '';
-            position: absolute; top: -60px; right: -60px;
-            width: 200px; height: 200px;
-            background: radial-gradient(circle, rgba(6,255,35,.07) 0%, transparent 70%);
+            position: absolute; top: -100px; right: -100px;
+            width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(6,255,35,.1) 0%, transparent 70%);
             pointer-events: none;
         }
 
         .inversion-label {
-            font-family: var(--mono); font-size: .75rem;
-            letter-spacing: 3px; color: var(--verde); opacity: .6;
-            margin-bottom: 8px;
+            font-family: var(--mono); font-size: .8rem;
+            letter-spacing: 4px; color: var(--verde); opacity: .8;
+            margin-bottom: 12px;
         }
 
         .inversion-amount {
-            font-family: var(--mono); font-size: clamp(2.5rem, 6vw, 4rem);
+            font-family: var(--mono); font-size: clamp(3rem, 8vw, 5rem);
             color: var(--verde); font-weight: 700;
             text-shadow: var(--glow); line-height: 1;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
 
         .inversion-sub {
-            font-size: .9rem; opacity: .5;
-            margin-bottom: 32px;
+            font-size: 1rem; opacity: .6;
+            margin-bottom: 48px;
             font-family: var(--mono);
         }
 
-        .btn-group { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px; }
+        .btn-group { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; }
 
         .btn {
-            display: inline-flex; align-items: center; gap: 10px;
+            display: inline-flex; align-items: center; gap: 12px;
             background: var(--verde); color: var(--negro);
-            padding: 15px 32px; text-decoration: none;
+            padding: 18px 40px; text-decoration: none;
             font-weight: 700; font-family: var(--mono);
-            font-size: .85rem; letter-spacing: 2px;
+            font-size: .9rem; letter-spacing: 2px;
             text-transform: uppercase;
-            border: 2px solid var(--verde);
-            transition: all .25s;
+            border: 1px solid var(--verde);
+            border-radius: 4px;
+            transition: all .3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
         }
-        .btn:hover { background: transparent; color: var(--verde); box-shadow: var(--glow); transform: translateY(-2px); }
+        
+        .btn:hover { 
+            background: transparent; 
+            color: var(--verde); 
+            box-shadow: var(--glow-hover); 
+            transform: translateY(-4px); 
+        }
 
         .btn-outline {
-            background: transparent; border: 2px solid var(--verde);
+            background: rgba(6,255,35,0.05); 
+            border: 1px solid rgba(6,255,35,0.5);
             color: var(--verde);
+            backdrop-filter: blur(4px);
         }
-        .btn-outline:hover { background: var(--verde); color: var(--negro); }
+        .btn-outline:hover { 
+            background: var(--verde); 
+            color: var(--negro); 
+            border-color: var(--verde);
+        }
 
         .cta-note {
-            font-size: .8rem; font-family: var(--mono);
-            opacity: .45; letter-spacing: 1px;
+            font-size: .85rem; font-family: var(--mono);
+            opacity: .5; letter-spacing: 1.5px;
         }
 
         /* ─── FOOTER ─── */
         footer {
-            text-align: center; padding: 48px 24px;
-            border-top: 1px solid var(--gris);
+            text-align: center; padding: 60px 24px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            background: #000;
         }
 
         .footer-brand {
-            font-family: var(--mono); letter-spacing: 3px;
-            font-size: .85rem; margin-bottom: 16px;
-            color: var(--verde); opacity: .7;
+            font-family: var(--mono); letter-spacing: 4px;
+            font-size: .9rem; margin-bottom: 20px;
+            color: var(--verde); opacity: .8;
         }
 
         footer a {
             color: var(--verde); text-decoration: none;
-            font-family: var(--mono); font-size: .8rem;
-            margin: 0 10px; opacity: .5; transition: opacity .2s;
+            font-family: var(--mono); font-size: .85rem;
+            margin: 0 16px; opacity: .6; transition: opacity .3s;
         }
-        footer a:hover { opacity: 1; }
+        footer a:hover { opacity: 1; text-shadow: var(--glow-sm);}
+
+        /* ─── REVEAL ANIMATIONS (SCROLL) ─── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, visibility;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Delays para las grillas */
+        .card-grid .card:nth-child(1) { transition-delay: 0.1s; }
+        .card-grid .card:nth-child(2) { transition-delay: 0.2s; }
+        .card-grid .card:nth-child(3) { transition-delay: 0.3s; }
+        .card-grid .card:nth-child(4) { transition-delay: 0.4s; }
+        .card-grid .card:nth-child(5) { transition-delay: 0.5s; }
+        .card-grid .card:nth-child(6) { transition-delay: 0.6s; }
 
         /* ─── RESPONSIVE ─── */
         @media (max-width: 900px) {
-            .stats { grid-template-columns: repeat(3,1fr); }
+            .stats { grid-template-columns: repeat(3,1fr); margin-top: 60px; }
+            section { padding: 80px 0; }
         }
         @media (max-width: 640px) {
-            h1 { letter-spacing: 3px; }
+            h1 { letter-spacing: 3px; font-size: 2.2rem; }
+            .hero-sub { font-size: 1rem; margin-bottom: 40px; }
             .stats { grid-template-columns: repeat(2,1fr); }
-            .tl-item { grid-template-columns: 1fr; gap: 4px; }
-            .tl-time { font-size: .8rem; }
+            .tl-item { grid-template-columns: 1fr; gap: 8px; margin-bottom: 40px; }
+            .tl-item::before { left: -44px; top: 4px; }
+            .tl-time { font-size: .85rem; }
             .carousel { aspect-ratio: 4/3; }
             .nav-links { display: none; }
-            .cta-box { padding: 36px 20px; }
+            .cta-box { padding: 50px 24px; margin: 50px 0; }
+            .inversion-amount { font-size: 2.5rem; }
+            .btn { width: 100%; justify-content: center; }
+            .highlight-box { padding: 24px; }
+            section { padding: 60px 0; }
+            .nav-inner { height: 60px; }
         }
 
-        /* ─── ANIMACIÓN ENTRADA ─── */
-        @keyframes fadeUp {
+        /* ─── ANIMACIÓN ENTRADA HERO ─── */
+        @keyframes fadeUpHero {
             from { opacity: 0; transform: translateY(20px); }
             to   { opacity: 1; transform: translateY(0); }
         }
         .hero-tag, h1, .hero-sub, .carousel-wrap, .stats {
-            animation: fadeUp .7s ease both;
+            animation: fadeUpHero .8s cubic-bezier(0.16, 1, 0.3, 1) both;
         }
-        h1         { animation-delay: .1s; }
-        .hero-sub  { animation-delay: .2s; }
+        h1             { animation-delay: .1s; }
+        .hero-sub      { animation-delay: .2s; }
         .carousel-wrap { animation-delay: .3s; }
-        .stats     { animation-delay: .4s; }
+        .stats         { animation-delay: .4s; }
     </style>
 </head>
 <body>
@@ -500,7 +609,6 @@
     <div class="carousel-wrap">
         <div class="carousel" id="carousel">
 
-            <!-- SLIDE 1 — reemplaza .slide-placeholder con <img src="tu-foto.jpg"> -->
             <div class="slide active">
                 <div class="slide-placeholder">
                     <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="1">
@@ -511,7 +619,6 @@
                 </div>
             </div>
 
-            <!-- SLIDE 2 -->
             <div class="slide">
                 <div class="slide-placeholder">
                     <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="1">
@@ -522,7 +629,6 @@
                 </div>
             </div>
 
-            <!-- SLIDE 3 -->
             <div class="slide">
                 <div class="slide-placeholder">
                     <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="1">
@@ -533,7 +639,6 @@
                 </div>
             </div>
 
-            <!-- SLIDE 4 -->
             <div class="slide">
                 <div class="slide-placeholder">
                     <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="1">
@@ -544,7 +649,6 @@
                 </div>
             </div>
 
-            <!-- SLIDE 5 -->
             <div class="slide">
                 <div class="slide-placeholder">
                     <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="1">
@@ -556,10 +660,10 @@
             </div>
 
             <button class="carousel-btn prev" id="prev" aria-label="Anterior">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
             </button>
             <button class="carousel-btn next" id="next" aria-label="Siguiente">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
             </button>
         </div>
 
@@ -570,9 +674,9 @@
     <div class="stats container">
         <div class="stat"><strong>10:00–17:00</strong><span>Jornada completa</span></div>
         <div class="stat"><strong>8–14 años</strong><span>Exploradores</span></div>
-        <div class="stat"><strong>$30.000</strong><span>Inversión por persona</span></div>
+        <div class="stat"><strong>$30.000</strong><span>Inversión</span></div>
         <div class="stat"><strong>Máx. 12</strong><span>Cupos limitados</span></div>
-        <div class="stat"><strong>Julio 2026</strong><span>Fecha por confirmar</span></div>
+        <div class="stat"><strong>Julio 2026</strong><span>Por confirmar</span></div>
         <div class="stat"><strong>Nysa Arts</strong><span>Estudio profesional</span></div>
     </div>
 </div>
@@ -581,7 +685,7 @@
 <main class="container">
 
     <!-- 01 OBJETIVO -->
-    <section id="objetivo">
+    <section id="objetivo" class="reveal">
         <div class="section-head">
             <div class="section-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="1.8">
@@ -598,7 +702,7 @@
         <p>El taller no busca formar músicos. Busca que cada participante descubra su relación personal con la música y vuelva a casa habiendo creado algo que no existía antes de ese día.</p>
 
         <div class="card-grid">
-            <div class="card">
+            <div class="card reveal">
                 <div class="card-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2">
                         <path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
@@ -607,7 +711,7 @@
                 <h3>Objetivo 01</h3>
                 <p>Reconocer géneros musicales y sus características emocionales y físicas.</p>
             </div>
-            <div class="card">
+            <div class="card reveal">
                 <div class="card-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2">
                         <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
@@ -616,7 +720,7 @@
                 <h3>Objetivo 02</h3>
                 <p>Explorar instrumentos reales: guitarra, bajo, batería y teclado. Sin nivel previo.</p>
             </div>
-            <div class="card">
+            <div class="card reveal">
                 <div class="card-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2">
                         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
@@ -625,7 +729,7 @@
                 <h3>Objetivo 03</h3>
                 <p>Conectar el sonido con el cuerpo y las emociones a través de escucha activa.</p>
             </div>
-            <div class="card">
+            <div class="card reveal">
                 <div class="card-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2">
                         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
@@ -634,7 +738,7 @@
                 <h3>Objetivo 04</h3>
                 <p>Crear y grabar una pieza musical colectiva simple al final de la jornada.</p>
             </div>
-            <div class="card">
+            <div class="card reveal">
                 <div class="card-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2">
                         <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
@@ -643,7 +747,7 @@
                 <h3>Objetivo 05</h3>
                 <p>Identificar el instrumento o género con el que cada participante resonó más.</p>
             </div>
-            <div class="card">
+            <div class="card reveal">
                 <div class="card-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2">
                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -651,13 +755,13 @@
                     </svg>
                 </div>
                 <h3>Objetivo 06</h3>
-                <p>Disfrutar el aprendizaje en un ambiente seguro, libre de juicio, donde cada participante puede ser exactamente quien es.</p>
+                <p>Disfrutar el aprendizaje en un ambiente seguro, libre de juicio, siendo quienes son.</p>
             </div>
         </div>
     </section>
 
     <!-- 02 METODOLOGÍA -->
-    <section id="metodologia">
+    <section id="metodologia" class="reveal">
         <div class="section-head">
             <div class="section-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="1.8">
@@ -672,7 +776,7 @@
 
         <p>El taller se estructura bajo la metodología <strong>Academia de la Vida</strong>, línea educativa de Lost Astronauta con 25 años de trayectoria y experiencia de tutor validado por el Ministerio de Educación de Chile.</p>
 
-        <div class="highlight-box">
+        <div class="highlight-box reveal">
             <div class="pillar">
                 <div class="pillar-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2">
@@ -701,7 +805,7 @@
     </section>
 
     <!-- 03 JORNADA -->
-    <section id="jornada">
+    <section id="jornada" class="reveal">
         <div class="section-head">
             <div class="section-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="1.8">
@@ -716,116 +820,116 @@
 
         <div class="timeline">
 
-            <div class="tl-item">
+            <div class="tl-item reveal">
                 <div class="tl-time">10:00</div>
                 <div class="tl-body">
                     <div class="tl-title">
-                        <svg class="tl-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        <svg class="tl-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
                         Bienvenida y acuerdos
                     </div>
                     <div class="tl-desc">Presentación del facilitador y el espacio. Acuerdos de convivencia. Dinámica: "¿Qué canción describe cómo llegaste hoy?"</div>
                 </div>
             </div>
 
-            <div class="tl-item">
+            <div class="tl-item reveal">
                 <div class="tl-time">10:20</div>
                 <div class="tl-body">
                     <div class="tl-title">
-                        <svg class="tl-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/></svg>
+                        <svg class="tl-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/></svg>
                         Bloque 1 — La música tiene cuerpo
                     </div>
                     <div class="tl-desc">¿Qué es el sonido? Ritmo, melodía y armonía explicados corporalmente. Escucha activa de 4 fragmentos.</div>
                 </div>
             </div>
 
-            <div class="tl-item">
+            <div class="tl-item reveal">
                 <div class="tl-time">11:10</div>
                 <div class="tl-body">
                     <div class="tl-title">
-                        <svg class="tl-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        <svg class="tl-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
                         Bloque 2 — Los lenguajes de la música
                     </div>
                     <div class="tl-desc">Recorrido por géneros con audio, referencias visuales y contexto histórico. Concepto: música como intención + emoción + estructura.</div>
                 </div>
             </div>
 
-            <div class="tl-item">
+            <div class="tl-item reveal">
                 <div class="tl-time">12:00</div>
                 <div class="tl-body">
                     <div class="tl-title">
-                        <svg class="tl-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                        <svg class="tl-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
                         Práctica 1 — Primer contacto
                     </div>
                     <div class="tl-desc">Sala de ensayo. Exploración libre guiada. Rotación por instrumentos. Cierre: "¿Cuál fue tu frecuencia?"</div>
                 </div>
             </div>
 
-            <div class="tl-item">
+            <div class="tl-item reveal">
                 <div class="tl-time">13:00</div>
                 <div class="tl-body">
                     <div class="tl-title">
-                        <svg class="tl-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+                        <svg class="tl-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
                         Pausa — Torre de pizza 🍕
                     </div>
                     <div class="pizza-block">
                         <div class="pizza-title">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                             NOSOTROS PONEMOS LA PIZZA PARA TODOS
                         </div>
-                        <p>Compartiremos una torre de pizza para toda la jornada. Solo pedimos traer <strong>botella de agua reutilizable</strong>. Si algún participante necesita algo específico o tiene alguna restricción alimentaria, puede traer su snack extra. <strong>Importante: informar alergias alimentarias al momento de inscribirse.</strong></p>
+                        <p>Compartiremos una torre de pizza para toda la jornada. Solo pedimos traer <strong>botella de agua reutilizable</strong>. Si algún participante necesita algo específico o tiene alguna restricción alimentaria, puede traer su snack extra. <strong>Importante: informar alergias al inscribirse.</strong></p>
                     </div>
                 </div>
             </div>
 
-            <div class="tl-item">
+            <div class="tl-item reveal">
                 <div class="tl-time">14:00</div>
                 <div class="tl-body">
                     <div class="tl-title">
-                        <svg class="tl-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                        <svg class="tl-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
                         Reactivación — El cuerpo como instrumento
                     </div>
                     <div class="tl-desc">Sala de espejos. Percusión corporal colectiva por capas. Conexión cuerpo → emoción → sonido.</div>
                 </div>
             </div>
 
-            <div class="tl-item">
+            <div class="tl-item reveal">
                 <div class="tl-time">14:30</div>
                 <div class="tl-body">
                     <div class="tl-title">
-                        <svg class="tl-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        <svg class="tl-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                         Práctica 2 — Creamos algo
                     </div>
                     <div class="tl-desc">Sala de ensayo. Grupos de 3-4. Crear un patrón rítmico-melódico de 8 tiempos con 1-2 instrumentos.</div>
                 </div>
             </div>
 
-            <div class="tl-item">
+            <div class="tl-item reveal">
                 <div class="tl-time">15:30</div>
                 <div class="tl-body">
                     <div class="tl-title">
-                        <svg class="tl-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                        <svg class="tl-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
                         Transmisión — Muestra interna
                     </div>
                     <div class="tl-desc">Cada grupo presenta su creación. Escucha activa. <em>"Hoy crearon algo que no existía esta mañana."</em></div>
                 </div>
             </div>
 
-            <div class="tl-item">
+            <div class="tl-item reveal">
                 <div class="tl-time">16:20</div>
                 <div class="tl-body">
                     <div class="tl-title">
-                        <svg class="tl-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+                        <svg class="tl-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
                         Cierre — Kit del Explorador
                     </div>
                     <div class="tl-desc">Reflexión individual. Entrega del <strong>Fanzine "Frecuencias"</strong>, <strong>Sticker exclusivo</strong> y <strong>Certificado de Participación</strong>.</div>
                 </div>
             </div>
 
-            <div class="tl-item">
+            <div class="tl-item reveal">
                 <div class="tl-time">17:00</div>
                 <div class="tl-body">
                     <div class="tl-title">
-                        <svg class="tl-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+                        <svg class="tl-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
                         Fin de jornada
                     </div>
                     <div class="tl-desc">Llegada de padres y tutores. Facilitador disponible para comentarios.</div>
@@ -836,7 +940,7 @@
     </section>
 
     <!-- 04 APRENDIZAJES -->
-    <section id="aprendizajes">
+    <section id="aprendizajes" class="reveal">
         <div class="section-head">
             <div class="section-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="1.8">
@@ -850,7 +954,7 @@
         </div>
 
         <div class="card-grid">
-            <div class="card">
+            <div class="card reveal">
                 <div class="card-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2">
                         <path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
@@ -859,7 +963,7 @@
                 <h3>Escucha activa</h3>
                 <p>Distinguir géneros, identificar ritmo/melodía/armonía y reconocer la intención emocional de cada pieza.</p>
             </div>
-            <div class="card">
+            <div class="card reveal">
                 <div class="card-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2">
                         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
@@ -868,7 +972,7 @@
                 <h3>Conciencia corporal</h3>
                 <p>Marcar pulso, identificar cómo la música afecta físicamente y participar en percusión colectiva.</p>
             </div>
-            <div class="card">
+            <div class="card reveal">
                 <div class="card-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2">
                         <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
@@ -877,7 +981,7 @@
                 <h3>Contacto instrumental</h3>
                 <p>Familiarizarse con 4 instrumentos reales, producir sonido intencional e identificar afinidad personal.</p>
             </div>
-            <div class="card">
+            <div class="card reveal">
                 <div class="card-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2">
                         <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
@@ -886,29 +990,29 @@
                 <h3>Creación colectiva</h3>
                 <p>Trabajar hacia un resultado sonoro grupal, tomar decisiones creativas y presentar una obra propia.</p>
             </div>
-            <div class="card">
+            <div class="card reveal">
                 <div class="card-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2">
                         <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
                     </svg>
                 </div>
                 <h3>Vocabulario musical</h3>
-                <p>Incorporar términos básicos — pulso, tempo, dinámica, timbre — en un contexto práctico y sin tecnicismos.</p>
+                <p>Incorporar términos básicos — pulso, tempo, dinámica, timbre — en un contexto práctico.</p>
             </div>
-            <div class="card">
+            <div class="card reveal">
                 <div class="card-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2">
                         <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
                     </svg>
                 </div>
                 <h3>Autoconocimiento creativo</h3>
-                <p>Reconocer preferencias propias, desarrollar tolerancia al error y ejercitar la capacidad de decisión artística.</p>
+                <p>Reconocer preferencias propias, desarrollar tolerancia al error y ejercitar la capacidad de decisión.</p>
             </div>
         </div>
     </section>
 
     <!-- 05 PADRES -->
-    <section id="padres">
+    <section id="padres" class="reveal">
         <div class="section-head">
             <div class="section-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="1.8">
@@ -922,73 +1026,73 @@
         </div>
 
         <div class="card-grid">
-            <div class="card">
+            <div class="card reveal">
                 <div class="card-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 </div>
                 <h3>Puntualidad</h3>
                 <p>El taller inicia a las 10:00 hrs. Llegar 10 minutos antes para el registro.</p>
             </div>
-            <div class="card">
+            <div class="card reveal">
                 <div class="card-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/></svg>
                 </div>
                 <h3>Ropa cómoda</h3>
                 <p>Habrá movimiento corporal. Ropa y calzado sin restricciones de movimiento.</p>
             </div>
-            <div class="card">
+            <div class="card reveal">
                 <div class="card-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
                 </div>
                 <h3>Alimentación</h3>
-                <p><strong>Nosotros ponemos la pizza.</strong> Compartiremos una torre de pizza para todos. Solo pedimos agua reutilizable. Si necesitan algo específico, pueden traer un snack extra.</p>
+                <p><strong>Nosotros ponemos la pizza.</strong> Solo pedimos agua reutilizable. Si necesitan algo específico, pueden traerlo.</p>
             </div>
-            <div class="card">
+            <div class="card reveal">
                 <div class="card-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                 </div>
                 <h3>Salud & alergias</h3>
-                <p>Informar <strong>alergias alimentarias o condiciones médicas</strong> al momento de la inscripción. Es importante para planificar bien la torre de pizza.</p>
+                <p>Informar <strong>alergias alimentarias o condiciones médicas</strong> al momento de la inscripción. Vital para la pizza.</p>
             </div>
-            <div class="card">
+            <div class="card reveal">
                 <div class="card-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
                 </div>
-                <h3>Sin experiencia previa</h3>
+                <h3>Sin experiencia</h3>
                 <p>No se requiere conocimiento musical. El taller parte desde cero absoluto.</p>
             </div>
-            <div class="card">
+            <div class="card reveal">
                 <div class="card-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
                 </div>
                 <h3>El espacio</h3>
-                <p><a href="https://www.instagram.com/nysa_arts/?hl=es-la" target="_blank" rel="noopener noreferrer">Nysa Arts</a> Studio es un espacio profesional con instrumentos reales en entorno acústico controlado.</p>
+                <p><a href="https://www.instagram.com/nysa_arts/?hl=es-la" target="_blank" rel="noopener noreferrer">Nysa Arts</a> Studio es un espacio profesional en entorno acústico controlado.</p>
             </div>
-            <div class="card">
+            <div class="card reveal">
                 <div class="card-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
                 </div>
                 <h3>Retiro</h3>
                 <p>Jornada finaliza a las 17:00 hrs. Padres pueden llegar desde las 16:30 para el cierre.</p>
             </div>
-            <div class="card">
+            <div class="card reveal">
                 <div class="card-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
                 </div>
                 <h3>Celulares</h3>
-                <p>Modo silencio durante los bloques de actividad para mantener la inmersión total en la experiencia.</p>
+                <p>Modo silencio durante los bloques de actividad para mantener la inmersión total.</p>
             </div>
-            <div class="card">
+            <div class="card reveal">
                 <div class="card-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
                 </div>
                 <h3>Registro fotográfico</h3>
-                <p>Durante el taller se tomará registro de la experiencia. Si tienes objeción al uso de imágenes de tu hijo/a, indícalo al momento de inscribirte.</p>
+                <p>Se tomará registro de la experiencia. Si tienes objeción, indícalo al momento de inscribirte.</p>
             </div>
         </div>
     </section>
 
-   <section id="facilitador">
+   <section id="facilitador" class="reveal">
         <div class="section-head">
             <div class="section-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="1.8">
@@ -997,52 +1101,49 @@
             </div>
             <div>
                 <div class="section-num">06</div>
-
-                
-               <!-- 06 FACILITADOR --> 
                 <h2>Tu facilitador</h2>
             </div>
         </div>
 
-        <div style="display:grid; grid-template-columns: 1fr 2fr; gap: 1px; background: var(--gris); border: 1px solid var(--gris);">
-            <div style="background:var(--negro); padding:36px 30px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:16px;">
-                <div style="width:120px; height:120px; border:2px solid var(--verde-border); border-radius:8px; background:var(--verde-dim); display:flex; align-items:center; justify-content:center; box-shadow:var(--glow); overflow:hidden;">
+        <div style="display:grid; grid-template-columns: 1fr 2fr; gap: 1px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; overflow: hidden;">
+            <div style="background:var(--negro); padding:48px 30px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:20px;">
+                <div style="width:140px; height:140px; border:2px solid var(--verde-border); border-radius:50%; background:var(--verde-dim); display:flex; align-items:center; justify-content:center; box-shadow:var(--glow-sm); overflow:hidden;">
                     <img src="https://i0.wp.com/lostastronauta.org/wp-content/uploads/2024/09/astromykos-ID.png?w=1600&ssl=1" 
                          alt="AstroMykos ID" 
                          style="width:100%; height:100%; object-fit:cover;">
                 </div>
                 <div>
-                    <div style="font-family:var(--mono); color:var(--verde); font-size:1rem; letter-spacing:2px; margin-bottom:4px;">ASTROMYKOS</div>
-                    <div style="font-size:.8rem; opacity:.5; font-family:var(--mono);">Lost Astronauta SpA</div>
+                    <div style="font-family:var(--mono); color:var(--verde); font-size:1.1rem; letter-spacing:2px; margin-bottom:4px; font-weight:700;">ASTROMYKOS</div>
+                    <div style="font-size:.85rem; opacity:.6; font-family:var(--mono);">Lost Astronauta SpA</div>
                 </div>
-                <a href="https://lostastronauta.org/about/" target="_blank" style="display:inline-flex; align-items:center; gap:8px; font-family:var(--mono); font-size:.75rem; color:var(--verde); text-decoration:none; border:1px solid var(--verde-border); padding:8px 16px; transition:all .2s; letter-spacing:1px;"
-                    onmouseover="this.style.background='rgba(6,255,35,0.08)'" onmouseout="this.style.background='transparent'">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                <a href="https://lostastronauta.org/about/" target="_blank" style="display:inline-flex; align-items:center; gap:10px; font-family:var(--mono); font-size:.8rem; color:var(--blanco); text-decoration:none; border:1px solid rgba(255,255,255,0.2); padding:10px 20px; transition:all .3s; letter-spacing:1px; border-radius: 4px;"
+                    onmouseover="this.style.background='var(--verde)'; this.style.color='var(--negro)'; this.style.borderColor='var(--verde)';" onmouseout="this.style.background='transparent'; this.style.color='var(--blanco)'; this.style.borderColor='rgba(255,255,255,0.2)';">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                     Ver perfil completo
                 </a>
             </div>
-            <div style="background:var(--negro); padding:36px 36px;">
-                <p style="font-size:1.05rem; margin-bottom:18px; opacity:.9; line-height:1.8;">
+            <div style="background:var(--negro); padding:48px 40px; display: flex; flex-direction: column; justify-content: center;">
+                <p style="font-size:1.1rem; margin-bottom:20px; opacity:.9; line-height:1.8;">
                     El taller es impartido por <strong style="color:var(--verde);">AstroMykos</strong>, director creativo y piloto de la nave de <strong>Lost Astronauta SpA</strong>, ecosistema de diseño estratégico, educación y producción cultural con más de <strong>25 años de trayectoria</strong> en Chile.
                 </p>
-                <p style="margin-bottom:18px;">
+                <p style="margin-bottom:20px;">
                     Con formación en diseño, comunicación y metodologías activas, AstroMykos ha desarrollado tutorías educativas validada por el <strong>Ministerio de Educación de Chile</strong> y ha facilitado múltiples experiencias de aprendizaje recreativas para niños, jóvenes y adultos.
                 </p>
                 <p style="margin-bottom:0;">
                     Su metodología combina el rigor técnico con la filosofía del <em>Rock Protónico</em>: la creatividad como partícula fundamental, el error como combustible y el territorio propio como punto de partida. Cada taller es un espacio protegido donde no existe la respuesta incorrecta.
                 </p>
-                <div style="display:flex; gap:24px; margin-top:24px; flex-wrap:wrap;">
+                <div style="display:flex; gap:24px; margin-top:32px; flex-wrap:wrap;">
                     <div style="display:flex; align-items:center; gap:8px;">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-                        <span style="font-family:var(--mono); font-size:.75rem; opacity:.6;">+25 años de trayectoria</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                        <span style="font-family:var(--mono); font-size:.8rem; opacity:.7;">+25 años de trayectoria</span>
                     </div>
                     <div style="display:flex; align-items:center; gap:8px;">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                        <span style="font-family:var(--mono); font-size:.75rem; opacity:.6;">Validado Mineduc</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        <span style="font-family:var(--mono); font-size:.8rem; opacity:.7;">Validado Mineduc</span>
                     </div>
                     <div style="display:flex; align-items:center; gap:8px;">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-                        <span style="font-family:var(--mono); font-size:.75rem; opacity:.6;">Santiago, Chile</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        <span style="font-family:var(--mono); font-size:.8rem; opacity:.7;">Santiago, Chile</span>
                     </div>
                 </div>
             </div>
@@ -1050,9 +1151,9 @@
     </section>
 
     <!-- 07 INSCRIPCIÓN -->
-    <section id="inscripcion">
+    <section id="inscripcion" class="reveal" style="border-bottom: none;">
         <div class="cta-box">
-            <div class="section-head" style="justify-content:center; margin-bottom:24px;">
+            <div class="section-head" style="justify-content:center; margin-bottom:32px;">
                 <div class="section-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="#06FF23" stroke-width="1.8">
                         <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
@@ -1060,11 +1161,11 @@
                 </div>
                 <div>
                     <div class="section-num">07</div>
-                    <h2>Inscripción</h2>
+                    <h2 style="font-weight: 700;">Inscripción</h2>
                 </div>
             </div>
 
-            <p style="opacity:.55; margin-bottom:28px; font-family:var(--mono); font-size:.8rem; letter-spacing:1.5px;">
+            <p style="opacity:.6; margin-bottom:36px; font-family:var(--mono); font-size:.85rem; letter-spacing:2px;">
                 VACACIONES DE INVIERNO 2026 · NYSA ARTS STUDIO · SANTIAGO DE CHILE
             </p>
 
@@ -1074,18 +1175,18 @@
 
             <div class="btn-group">
                 <a href="https://wa.me/56975693952?text=Hola%2C%20quiero%20inscribirme%20en%20el%20Taller%20Frecuencias%20de%20Lost%20Astronauta" class="btn">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
                     Inscribirse por WhatsApp
                 </a>
                 <a href="mailto:lost.astronauta@gmail.com?subject=Inscripcion%20Taller%20Frecuencias" 
-   class="btn btn-outline" 
-   style="pointer-events: auto; cursor: pointer; position: relative; z-index: 10;">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-        <polyline points="22,6 12,13 2,6"/>
-    </svg>
-    Escribir por email
-</a>
+                   class="btn btn-outline" 
+                   style="pointer-events: auto; cursor: pointer; position: relative; z-index: 10;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                    Escribir por email
+                </a>
             </div>
 
             <p class="cta-note">MÁXIMO 12 CUPOS · CONFIRMACIÓN CON 50% ANTICIPO · FECHA JULIO POR CONFIRMAR</p>
@@ -1104,12 +1205,12 @@
 </footer>
 
 <script>
+    // --- Carrusel ---
     const slides = document.querySelectorAll('.slide');
     const dotsContainer = document.getElementById('dots');
     let current = 0;
     let timer;
 
-    // Generar dots
     slides.forEach((_, i) => {
         const d = document.createElement('button');
         d.className = 'dot' + (i === 0 ? ' active' : '');
@@ -1129,13 +1230,31 @@
 
     function resetTimer() {
         clearInterval(timer);
-        timer = setInterval(() => goTo(current + 1), 4500);
+        timer = setInterval(() => goTo(current + 1), 5000);
     }
 
     document.getElementById('prev').addEventListener('click', () => goTo(current - 1));
     document.getElementById('next').addEventListener('click', () => goTo(current + 1));
 
     resetTimer();
+
+    // --- Reveal on Scroll ---
+    const revealElements = document.querySelectorAll('.reveal');
+    
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target); // Solo animar una vez
+            }
+        });
+    }, {
+        root: null,
+        threshold: 0.1, // Trigger cuando el 10% del elemento es visible
+        rootMargin: "0px 0px -50px 0px"
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
 </script>
 
 </body>
