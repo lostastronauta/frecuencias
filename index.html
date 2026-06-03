@@ -726,51 +726,61 @@
 
     <!-- CARRUSEL -->
     <!-- ======================================================== -->
-<!-- SECCIÓN: GALERÍA VISUAL (SLIDER FRECUENCIAS)             -->
+<!-- CARRUSEL OPTIMIZADO (REEMPLAZO DIRECTO)                  -->
 <!-- ======================================================== -->
-<section class="slider-seccion">
-    <div class="slider-contenedor">
-        
-        <!-- Diapositiva 1: Portada -->
-        <div class="slide">
-            <img src="1.png" alt="Taller Frecuencias — Portada" loading="lazy">
-            <div class="slide-info">
-                <span>01 / 04</span>
-                <p>Portada del taller</p>
+<div class="carousel-wrap">
+    <div class="carousel" id="carousel">
+
+        <!-- Diapositiva 01 — Portada del taller -->
+        <div class="slide active" style="background-image: url('1.png'); background-size: cover; background-position: center; min-height: 450px;">
+            <!-- Mantenemos la estructura interna por si el CSS la requiere, pero limpia -->
+            <div class="slide-placeholder" style="background: rgba(11, 15, 25, 0.4); height: 100%; min-height: 450px; display: flex; flex-direction: column; justify-content: flex-end; padding: 20px;">
+                <span class="slide-label" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Imagen 01 — Portada del taller</span>
+                <span class="slide-num" style="color: #06FF23;">[ Conectado ]</span>
             </div>
         </div>
 
-        <!-- Diapositiva 2: Exploración Instrumental -->
-        <div class="slide">
-            <img src="2.png" alt="Trabajo en Equipo y Conexión Corporal" loading="lazy">
-            <div class="slide-info">
-                <span>02 / 04</span>
-                <p>Exploración instrumental</p>
+        <!-- Diapositiva 02 — Exploración instrumental -->
+        <div class="slide" style="background-image: url('2.png'); background-size: cover; background-position: center; min-height: 450px;">
+            <div class="slide-placeholder" style="background: rgba(11, 15, 25, 0.4); height: 100%; min-height: 450px; display: flex; flex-direction: column; justify-content: flex-end; padding: 20px;">
+                <span class="slide-label" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Imagen 02 — Exploración instrumental</span>
+                <span class="slide-num" style="color: #06FF23;">[ Conectado ]</span>
             </div>
         </div>
 
-        <!-- Diapositiva 3: Trabajo en Equipo -->
-        <div class="slide">
-            <img src="3.png" alt="Exploración musical" loading="lazy">
-            <div class="slide-info">
-                <span>03 / 04</span>
-                <p>Trabajo en equipo</p>
+        <!-- Diapositiva 03 — Trabajo en equipo -->
+        <div class="slide" style="background-image: url('3.png'); background-size: cover; background-position: center; min-height: 450px;">
+            <div class="slide-placeholder" style="background: rgba(11, 15, 25, 0.4); height: 100%; min-height: 450px; display: flex; flex-direction: column; justify-content: flex-end; padding: 20px;">
+                <span class="slide-label" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Imagen 03 — Trabajo en equipo</span>
+                <span class="slide-num" style="color: #06FF23;">[ Conectado ]</span>
             </div>
         </div>
 
-        <!-- Diapositiva 4: Muestra Final -->
-        <div class="slide">
-            <img src="4.png" alt="Grabación Final de Creación Colectiva" loading="lazy">
-            <div class="slide-info">
-                <span>04 / 04</span>
-                <p>Muestra final</p>
+        <!-- Diapositiva 04 — Muestra final -->
+        <div class="slide" style="background-image: url('4.png'); background-size: cover; background-position: center; min-height: 450px;">
+            <div class="slide-placeholder" style="background: rgba(11, 15, 25, 0.4); height: 100%; min-height: 450px; display: flex; flex-direction: column; justify-content: flex-end; padding: 20px;">
+                <span class="slide-label" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Imagen 04 — Muestra final</span>
+                <span class="slide-num" style="color: #06FF23;">[ Conectado ]</span>
             </div>
         </div>
 
+        <!-- Diapositiva 05 — Kit del Explorador (Duplicamos la portada o una imagen para no romper la lógica de 5 elementos de tu JS) -->
+        <div class="slide" style="background-image: url('1.png'); background-size: cover; background-position: center; min-height: 450px;">
+            <div class="slide-placeholder" style="background: rgba(11, 15, 25, 0.4); height: 100%; min-height: 450px; display: flex; flex-direction: column; justify-content: flex-end; padding: 20px;">
+                <span class="slide-label" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Imagen 05 — Kit del Explorador</span>
+                <span class="slide-num" style="color: #06FF23;">[ Conectado ]</span>
+            </div>
+        </div>
+
+        <!-- Botones de Control Originales -->
+        <button class="carousel-btn prev" id="prev" aria-label="Anterior">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="carousel-btn next" id="next" aria-label="Siguiente">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
     </div>
-    <!-- Indicador visual para móviles -->
-    <div class="slider-ayuda">Desliza para explorar la experiencia ➔</div>
-</section>
+</div>
 
     <!-- STATS -->
     <div class="stats container">
